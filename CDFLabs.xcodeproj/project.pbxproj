@@ -16,6 +16,7 @@
 		9C7904CE1C26650B00FFE0C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C7904CD1C26650B00FFE0C6 /* Assets.xcassets */; };
 		9C7904DC1C26650B00FFE0C6 /* CDFLabsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904DB1C26650B00FFE0C6 /* CDFLabsTests.swift */; };
 		9C7904E71C26650B00FFE0C6 /* CDFLabsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904E61C26650B00FFE0C6 /* CDFLabsUITests.swift */; };
+		9C7E5C9B1C33376800650437 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E5C9A1C33376800650437 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9C7904E21C26650B00FFE0C6 /* CDFLabsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CDFLabsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7904E61C26650B00FFE0C6 /* CDFLabsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFLabsUITests.swift; sourceTree = "<group>"; };
 		9C7904E81C26650B00FFE0C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C7E5C9A1C33376800650437 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */,
 				9C52EAC11C31D214007CC685 /* LocationsViewController.swift */,
 				9C7904C61C26650B00FFE0C6 /* AppDelegate.swift */,
+				9C7E5C9A1C33376800650437 /* Extensions.swift */,
 				9C7904CD1C26650B00FFE0C6 /* Assets.xcassets */,
 				9C7904D21C26650B00FFE0C6 /* Info.plist */,
 			);
@@ -267,6 +270,7 @@
 				9C52EAC01C31D20B007CC685 /* PrintersViewController.swift in Sources */,
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,
 				9C7904C71C26650B00FFE0C6 /* AppDelegate.swift in Sources */,
+				9C7E5C9B1C33376800650437 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

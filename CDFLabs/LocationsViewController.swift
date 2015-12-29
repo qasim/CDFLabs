@@ -8,8 +8,20 @@
 
 import UIKit
 
-class LocationsViewController: UIViewController {
+class LocationsViewController: UINavigationController {
 
+    var viewController: UIViewController?
+    
+    override func loadView() {
+        super.loadView()
+        self.navigationBar.translucent = false
+        
+        self.viewController = UIViewController()
+        self.viewController!.title = "Locations"
+        
+        self.pushViewController(viewController!, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

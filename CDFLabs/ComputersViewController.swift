@@ -8,8 +8,20 @@
 
 import UIKit
 
-class ComputersViewController: UIViewController {
+class ComputersViewController: UINavigationController {
 
+    var viewController: UIViewController?
+    
+    override func loadView() {
+        super.loadView()
+        self.navigationBar.translucent = false
+        
+        self.viewController = UIViewController()
+        self.viewController!.title = "Computers"
+        
+        self.pushViewController(viewController!, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

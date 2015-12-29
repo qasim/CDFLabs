@@ -19,26 +19,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationsViewController: LocationsViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.mainController = MainController()
+        
+        // View initialization
         self.computersViewController = ComputersViewController()
         self.printersViewController = PrintersViewController()
         self.locationsViewController = LocationsViewController()
-        
-        self.mainController = MainController()
         self.mainController?.viewControllers = [
             self.computersViewController!,
             self.printersViewController!,
             self.locationsViewController!
         ]
         
+        // Tab bar item creation
         self.computersViewController!.tabBarItem = UITabBarItem(title: "Computers", image: nil, tag: 0)
         self.printersViewController!.tabBarItem = UITabBarItem(title: "Printers", image: nil, tag: 1)
         self.locationsViewController!.tabBarItem = UITabBarItem(title: "Locations", image: nil, tag: 2)
-        
         self.mainController?.selectedIndex = 0
         
+        // Navigation bar app-wide styling
+        let navigationAppearance = UINavigationBar.appearance()
+        navigationAppearance.barStyle = UIBarStyle.Default
+        navigationAppearance.titleTextAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor() ]
+        navigationAppearance.barTintColor = UIColor.cdfBlueColor()
+        navigationAppearance.setBackgroundImage(UIImage(), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
+        navigationAppearance.shadowImage = UIImage()
+        
+        // Window styling
+        application.statusBarStyle = UIStatusBarStyle.LightContent
+        self.window?.backgroundColor = UIColor.cdfGreyColor()
         self.window?.rootViewController = self.mainController
         self.window?.makeKeyAndVisible()
         

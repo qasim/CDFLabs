@@ -8,8 +8,20 @@
 
 import UIKit
 
-class PrintersViewController: UIViewController {
+class PrintersViewController: UINavigationController {
 
+    var viewController: UIViewController?
+    
+    override func loadView() {
+        super.loadView()
+        self.navigationBar.translucent = false
+        
+        self.viewController = UIViewController()
+        self.viewController!.title = "Printers"
+        
+        self.pushViewController(viewController!, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
