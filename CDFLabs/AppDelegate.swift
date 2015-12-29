@@ -12,14 +12,36 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var viewController: ViewController?
+    var mainController: MainController?
+    
+    var computersViewController: ComputersViewController?
+    var printersViewController: PrintersViewController?
+    var locationsViewController: LocationsViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.viewController = ViewController(nibName: "ViewController", bundle: nil)
-        self.window?.rootViewController = self.viewController
+        
+        self.computersViewController = ComputersViewController()
+        self.printersViewController = PrintersViewController()
+        self.locationsViewController = LocationsViewController()
+        
+        self.mainController = MainController()
+        self.mainController?.viewControllers = [
+            self.computersViewController!,
+            self.printersViewController!,
+            self.locationsViewController!
+        ]
+        
+        self.computersViewController!.tabBarItem = UITabBarItem(title: "Computers", image: nil, tag: 0)
+        self.printersViewController!.tabBarItem = UITabBarItem(title: "Printers", image: nil, tag: 1)
+        self.locationsViewController!.tabBarItem = UITabBarItem(title: "Locations", image: nil, tag: 2)
+        
+        self.mainController?.selectedIndex = 0
+        
+        self.window?.rootViewController = self.mainController
         self.window?.makeKeyAndVisible()
+        
         return true
     }
 
