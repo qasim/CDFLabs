@@ -41,17 +41,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Selected)
         
         // Tab bar item creation
-        self.computersViewController!.tabBarItem = UITabBarItem(
-            title: "Computers", image: UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal), tag: 0)
-        self.computersViewController!.tabBarItem.selectedImage = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        let computerIcon = UIImage(named: "ComputerIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        let computerSelectedIcon = UIImage(named: "ComputerSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        self.computersViewController!.tabBarItem = UITabBarItem(title: "Computers", image: computerIcon, tag: 0)
+        self.computersViewController!.tabBarItem.selectedImage = computerSelectedIcon
         
-        self.printersViewController!.tabBarItem = UITabBarItem(
-            title: "Printers", image: UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal), tag: 1)
-        self.printersViewController!.tabBarItem.selectedImage = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        let printerIcon = UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        let printerSelectedIcon = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        self.printersViewController!.tabBarItem = UITabBarItem(title: "Printers", image: printerIcon, tag: 1)
+        self.printersViewController!.tabBarItem.selectedImage = printerSelectedIcon
         
+        let locationIcon = UIImage(named: "LocationIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        let locationSelectedIcon = UIImage(named:"LocationSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
         self.locationsViewController!.tabBarItem = UITabBarItem(
-            title: "Locations", image: UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal), tag: 2)
-        self.locationsViewController!.tabBarItem.selectedImage = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+            title: "Locations", image: locationIcon, tag: 2)
+        self.locationsViewController!.tabBarItem.selectedImage = locationSelectedIcon
         
         self.mainController?.selectedIndex = 0
         
