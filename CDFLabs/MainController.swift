@@ -10,6 +10,14 @@ import UIKit
 
 class MainController: UITabBarController {
     
+    override func loadView() {
+        super.loadView()
+        
+        self.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBar.barTintColor = UIColor.cdfBlueColor()
+        self.tabBar.setValue(true, forKey: "_hidesShadow")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

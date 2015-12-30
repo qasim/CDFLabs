@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationsViewController: LocationsViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.mainController = MainController()
         
@@ -33,13 +33,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.locationsViewController!
         ]
         
+        // Tab bar item styling
+        let tabBarItemAppearance = UITabBarItem.appearance()
+        tabBarItemAppearance.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.cdfDisabledBlueColor()], forState: .Normal)
+        tabBarItemAppearance.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Selected)
+        
         // Tab bar item creation
-        self.computersViewController!.tabBarItem = UITabBarItem(title: "Computers", image: nil, tag: 0)
-        self.printersViewController!.tabBarItem = UITabBarItem(title: "Printers", image: nil, tag: 1)
-        self.locationsViewController!.tabBarItem = UITabBarItem(title: "Locations", image: nil, tag: 2)
+        self.computersViewController!.tabBarItem = UITabBarItem(
+            title: "Computers", image: UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal), tag: 0)
+        self.computersViewController!.tabBarItem.selectedImage = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        
+        self.printersViewController!.tabBarItem = UITabBarItem(
+            title: "Printers", image: UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal), tag: 1)
+        self.printersViewController!.tabBarItem.selectedImage = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        
+        self.locationsViewController!.tabBarItem = UITabBarItem(
+            title: "Locations", image: UIImage(named: "PrinterIcon")?.imageWithRenderingMode(.AlwaysOriginal), tag: 2)
+        self.locationsViewController!.tabBarItem.selectedImage = UIImage(named:"PrinterSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
+        
         self.mainController?.selectedIndex = 0
         
-        // Navigation bar app-wide styling
+        // Navigation bar styling
         let navigationAppearance = UINavigationBar.appearance()
         navigationAppearance.barStyle = UIBarStyle.Default
         navigationAppearance.titleTextAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor() ]

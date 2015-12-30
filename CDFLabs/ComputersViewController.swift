@@ -10,16 +10,43 @@ import UIKit
 
 class ComputersViewController: UINavigationController {
 
-    var viewController: UIViewController?
+    var contentViewController: UIViewController?
+    var sortSegmentedControl: UISegmentedControl?
     
     override func loadView() {
         super.loadView()
         self.navigationBar.translucent = false
         
-        self.viewController = UIViewController()
-        self.viewController!.title = "Computers"
+        self.loadContentView()
+        self.pushViewController(self.contentViewController!, animated: false)
+    }
+    
+    func loadContentView() {
+        self.contentViewController = UIViewController()
+        self.contentViewController!.title = "Computers"
         
-        self.pushViewController(viewController!, animated: false)
+        let contentView = self.contentViewController!.view
+        
+        self.loadSortSegmentedControl()
+        contentView.addSubview(sortSegmentedControl!)
+        
+        let viewsDict: [String: AnyObject] = [
+            "sortSegmentedControl": self.sortSegmentedControl!
+        ]
+        
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "|-[sortSegmentedControl]-|", options: .AlignAllLeft, metrics: nil, views: viewsDict))
+        
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:|-16-[sortSegmentedControl]", options: .AlignAllTop, metrics: nil, views: viewsDict))
+        
+    }
+    
+    func loadSortSegmentedControl() {
+        self.sortSegmentedControl = UISegmentedControl(items: ["Availability", "Name"])
+        self.sortSegmentedControl?.translatesAutoresizingMaskIntoConstraints = false
+        self.sortSegmentedControl?.tintColor = UIColor.cdfBlueColor()
+        self.sortSegmentedControl?.selectedSegmentIndex = 0
     }
     
     override func viewDidLoad() {
@@ -30,6 +57,7 @@ class ComputersViewController: UINavigationController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
 

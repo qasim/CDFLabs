@@ -14,6 +14,10 @@ extension UIColor {
         return UIColor(red: 70 / 255, green: 147 / 255, blue: 208 / 255, alpha: 1.0)
     }
     
+    public class func cdfDisabledBlueColor() -> UIColor {
+        return UIColor(red: 179 / 255, green: 211 / 255, blue: 236 / 255, alpha: 1.0)
+    }
+    
     public class func cdfGreyColor() -> UIColor {
         return UIColor(red: 238 / 255, green: 238 / 255, blue: 238 / 255, alpha: 1.0)
     }
