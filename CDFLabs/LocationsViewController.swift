@@ -10,16 +10,20 @@ import UIKit
 
 class LocationsViewController: UINavigationController {
 
-    var viewController: UIViewController?
+    var contentViewController: UIViewController?
     
     override func loadView() {
         super.loadView()
+        
         self.navigationBar.translucent = false
         
-        self.viewController = UIViewController()
-        self.viewController!.title = "Locations"
-        
-        self.pushViewController(viewController!, animated: false)
+        self.loadContentView()
+        self.pushViewController(contentViewController!, animated: false)
+    }
+    
+    func loadContentView() {
+        self.contentViewController = UIViewController()
+        self.contentViewController!.title = "Locations"
     }
     
     override func viewDidLoad() {

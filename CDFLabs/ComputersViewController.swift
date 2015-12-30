@@ -15,6 +15,7 @@ class ComputersViewController: UINavigationController {
     
     override func loadView() {
         super.loadView()
+        
         self.navigationBar.translucent = false
         
         self.loadContentView()

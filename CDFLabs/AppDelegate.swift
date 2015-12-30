@@ -33,13 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.locationsViewController!
         ]
         
-        // Tab bar item styling
-        let tabBarItemAppearance = UITabBarItem.appearance()
-        tabBarItemAppearance.setTitleTextAttributes(
-            [NSForegroundColorAttributeName: UIColor.cdfDisabledBlueColor()], forState: .Normal)
-        tabBarItemAppearance.setTitleTextAttributes(
-            [NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Selected)
-        
         // Tab bar item creation
         let computerIcon = UIImage(named: "ComputerIcon")?.imageWithRenderingMode(.AlwaysOriginal)
         let computerSelectedIcon = UIImage(named: "ComputerSelectedIcon")?.imageWithRenderingMode(.AlwaysOriginal)
@@ -58,6 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.locationsViewController!.tabBarItem.selectedImage = locationSelectedIcon
         
         self.mainController?.selectedIndex = 0
+        
+        // Tab bar item styling
+        let tabBarItemAppearance = UITabBarItem.appearance()
+        tabBarItemAppearance.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.cdfDisabledBlueColor()], forState: .Normal)
+        tabBarItemAppearance.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Selected)
         
         // Navigation bar styling
         let navigationAppearance = UINavigationBar.appearance()
