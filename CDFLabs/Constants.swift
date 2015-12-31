@@ -10,5 +10,6 @@ import UIKit
 
 struct LabTable {
     static var cellHeight: CGFloat = 80.0
-    static var cellPadding: CGFloat = 16.0
+    static var cellPadding: CGFloat = 8.0
+    static var cellCornerRadius: CGFloat = 4.0
 }

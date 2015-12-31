@@ -15,8 +15,6 @@ class PrintersViewController: UINavigationController {
     override func loadView() {
         super.loadView()
         
-        self.navigationBar.translucent = false
-        
         self.loadContentView()
         self.pushViewController(contentViewController!, animated: false)
     }

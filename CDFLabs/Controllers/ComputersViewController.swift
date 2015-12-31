@@ -13,13 +13,11 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     var contentViewController: UIViewController?
     var sortSegmentedControl: UISegmentedControl?
     
-    var labData: [Lab]?
+    var labData: [Lab] = []
     var tableView: UITableView?
     
     override func loadView() {
         super.loadView()
-        
-        self.navigationBar.translucent = false
         
         self.labData = [
             Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
@@ -82,11 +80,11 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labData!.count
+        return labData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return LabTableViewCell(lab: self.labData![indexPath.row])
+        return LabTableViewCell(lab: self.labData[indexPath.row])
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

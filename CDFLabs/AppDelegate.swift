@@ -66,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationAppearance.barTintColor = UIColor.cdfBlueColor()
         navigationAppearance.setBackgroundImage(UIImage(), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
         navigationAppearance.shadowImage = UIImage()
+        navigationAppearance.translucent = false
         
         // Window styling
         application.statusBarStyle = UIStatusBarStyle.LightContent

@@ -10,25 +10,25 @@ import Foundation
 
 public class Lab {
     
-    var lab: String?
-    var timestamp: String?
+    var lab: String
+    var timestamp: String
  
-    var avail: Int?
-    var busy: Int?
-    var total: Int?
+    var avail: Int
+    var busy: Int
+    var total: Int
     
-    var percent: Double?
+    var percent: Double
     
     public init() {
-        self.lab = nil
+        self.lab = ""
         self.avail = 0
         self.busy = 0
         self.total = 0
         self.percent = 0
-        self.timestamp = nil
+        self.timestamp = ""
     }
     
-    public init(lab: String?, avail: Int?, busy: Int?, total: Int?, percent: Double?, timestamp: String?) {
+    public init(lab: String, avail: Int, busy: Int, total: Int, percent: Double, timestamp: String) {
         self.lab = lab
         self.avail = avail
         self.busy = busy
