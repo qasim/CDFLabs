@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName: UIColor.cdfDisabledBlueColor()], forState: .Normal)
         tabBarItemAppearance.setTitleTextAttributes(
             [NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Selected)
-        
+
         // Navigation bar styling
         let navigationAppearance = UINavigationBar.appearance()
         navigationAppearance.barStyle = UIBarStyle.Default

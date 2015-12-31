@@ -21,6 +21,32 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         
         self.navigationBar.translucent = false
         
+        self.labData = [
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 3200", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: "")
+        ]
+        
         self.loadContentView()
         self.pushViewController(self.contentViewController!, animated: false)
     }
@@ -29,29 +55,26 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         self.contentViewController = UIViewController()
         self.contentViewController!.title = "Computers"
         
-        self.labData = []
-        
+        let contentView = self.contentViewController!.view
+
         self.loadTableView()
-        
-        /*let contentView = self.contentViewController!.view
-        
-        self.loadSortSegmentedControl()
-        contentView.addSubview(sortSegmentedControl!)
+        contentView.addSubview(self.tableView!)
         
         let viewsDict: [String: AnyObject] = [
-            "sortSegmentedControl": self.sortSegmentedControl!
+            "tableView": self.tableView!
         ]
         
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|-[sortSegmentedControl]-|", options: .AlignAllLeft, metrics: nil, views: viewsDict))
+            "|[tableView]|", options: .AlignAllLeft, metrics: nil, views: viewsDict))
         
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-16-[sortSegmentedControl]", options: .AlignAllTop, metrics: nil, views: viewsDict))*/
+            "V:|[tableView]|", options: .AlignAllTop, metrics: nil, views: viewsDict))
         
     }
     
     func loadTableView() {
-        self.tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: .Plain)
+        self.tableView = LabTableView()
+
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         
@@ -63,7 +86,11 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return LabTableViewCell(lab: self.labData![indexPath.row])
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return LabTable.cellHeight + LabTable.cellPadding
     }
     
     override func viewDidLoad() {

@@ -27,4 +27,13 @@ public class Lab {
         self.percent = 0
         self.timestamp = nil
     }
+    
+    public init(lab: String?, avail: Int?, busy: Int?, total: Int?, percent: Double?, timestamp: String?) {
+        self.lab = lab
+        self.avail = avail
+        self.busy = busy
+        self.total = total
+        self.percent = percent
+        self.timestamp = timestamp
+    }
 }

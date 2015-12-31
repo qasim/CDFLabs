@@ -15,6 +15,7 @@ class MainController: UITabBarController {
         
         self.tabBar.tintColor = UIColor.whiteColor()
         self.tabBar.barTintColor = UIColor.cdfBlueColor()
+        self.tabBar.translucent = false
         self.tabBar.setValue(true, forKey: "_hidesShadow")
     }
     
