@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C4F9ABE1C34D3EA00ED0400 /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */; };
 		9C52EABB1C31D0FD007CC685 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EAB91C31D0FD007CC685 /* MainController.swift */; };
 		9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */; };
 		9C52EAC01C31D20B007CC685 /* PrintersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */; };
@@ -37,10 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9C52EAB91C31D0FD007CC685 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputersViewController.swift; sourceTree = "<group>"; };
-		9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintersViewController.swift; sourceTree = "<group>"; };
-		9C52EAC11C31D214007CC685 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lab.swift; path = Models/Lab.swift; sourceTree = "<group>"; };
+		9C52EAB91C31D0FD007CC685 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainController.swift; path = Controllers/MainController.swift; sourceTree = "<group>"; };
+		9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputersViewController.swift; path = Controllers/ComputersViewController.swift; sourceTree = "<group>"; };
+		9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintersViewController.swift; path = Controllers/PrintersViewController.swift; sourceTree = "<group>"; };
+		9C52EAC11C31D214007CC685 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsViewController.swift; path = Controllers/LocationsViewController.swift; sourceTree = "<group>"; };
 		9C52EAC51C3211B8007CC685 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		9C7904C31C26650B00FFE0C6 /* CDFLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDFLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7904C61C26650B00FFE0C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 		9C7904E21C26650B00FFE0C6 /* CDFLabsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CDFLabsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7904E61C26650B00FFE0C6 /* CDFLabsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFLabsUITests.swift; sourceTree = "<group>"; };
 		9C7904E81C26650B00FFE0C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C7E5C9A1C33376800650437 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9C7E5C9A1C33376800650437 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utils/Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C4F9ABF1C34D52D00ED0400 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9C4F9AC01C34D54600ED0400 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9C52EAB91C31D0FD007CC685 /* MainController.swift */,
+				9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */,
+				9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */,
+				9C52EAC11C31D214007CC685 /* LocationsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9C4F9AC11C34D59400ED0400 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9C7E5C9A1C33376800650437 /* Extensions.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		9C7904BA1C26650B00FFE0C6 = {
 			isa = PBXGroup;
 			children = (
@@ -103,13 +132,11 @@
 		9C7904C51C26650B00FFE0C6 /* CDFLabs */ = {
 			isa = PBXGroup;
 			children = (
-				9C52EAB91C31D0FD007CC685 /* MainController.swift */,
+				9C4F9AC01C34D54600ED0400 /* Controllers */,
+				9C4F9ABF1C34D52D00ED0400 /* Models */,
+				9C4F9AC11C34D59400ED0400 /* Utils */,
 				9C52EAC51C3211B8007CC685 /* LaunchScreen.xib */,
-				9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */,
-				9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */,
-				9C52EAC11C31D214007CC685 /* LocationsViewController.swift */,
 				9C7904C61C26650B00FFE0C6 /* AppDelegate.swift */,
-				9C7E5C9A1C33376800650437 /* Extensions.swift */,
 				9C7904CD1C26650B00FFE0C6 /* Assets.xcassets */,
 				9C7904D21C26650B00FFE0C6 /* Info.plist */,
 			);
@@ -271,6 +298,7 @@
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,
 				9C7904C71C26650B00FFE0C6 /* AppDelegate.swift in Sources */,
 				9C7E5C9B1C33376800650437 /* Extensions.swift in Sources */,
+				9C4F9ABE1C34D3EA00ED0400 /* Lab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

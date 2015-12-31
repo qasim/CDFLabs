@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ComputersViewController: UINavigationController {
+class ComputersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
     var contentViewController: UIViewController?
     var sortSegmentedControl: UISegmentedControl?
+    
+    var labData: [Lab]?
+    var tableView: UITableView?
     
     override func loadView() {
         super.loadView()
@@ -26,7 +29,11 @@ class ComputersViewController: UINavigationController {
         self.contentViewController = UIViewController()
         self.contentViewController!.title = "Computers"
         
-        let contentView = self.contentViewController!.view
+        self.labData = []
+        
+        self.loadTableView()
+        
+        /*let contentView = self.contentViewController!.view
         
         self.loadSortSegmentedControl()
         contentView.addSubview(sortSegmentedControl!)
@@ -39,15 +46,24 @@ class ComputersViewController: UINavigationController {
             "|-[sortSegmentedControl]-|", options: .AlignAllLeft, metrics: nil, views: viewsDict))
         
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-16-[sortSegmentedControl]", options: .AlignAllTop, metrics: nil, views: viewsDict))
+            "V:|-16-[sortSegmentedControl]", options: .AlignAllTop, metrics: nil, views: viewsDict))*/
         
     }
     
-    func loadSortSegmentedControl() {
-        self.sortSegmentedControl = UISegmentedControl(items: ["Availability", "Name"])
-        self.sortSegmentedControl?.translatesAutoresizingMaskIntoConstraints = false
-        self.sortSegmentedControl?.tintColor = UIColor.cdfBlueColor()
-        self.sortSegmentedControl?.selectedSegmentIndex = 0
+    func loadTableView() {
+        self.tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: .Plain)
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
+        
+        self.tableView?.reloadData()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return labData!.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
     
     override func viewDidLoad() {
