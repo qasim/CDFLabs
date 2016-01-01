@@ -52,7 +52,7 @@ class LabTableViewCell: UITableViewCell {
         let labDetailsLabel = UILabel()
         labDetailsLabel.translatesAutoresizingMaskIntoConstraints = false
         labDetailsLabel.textColor = UIColor.grayColor()
-        labDetailsLabel.font = UIFont.systemFontOfSize(14.0, weight: UIFontWeightLight)
+        labDetailsLabel.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
         labDetailsLabel.text = "\(lab.total) computers total (\(lab.percent)% busy)"
         insetView.addSubview(labDetailsLabel)
         
