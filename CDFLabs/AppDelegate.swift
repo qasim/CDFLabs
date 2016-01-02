@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationAppearance.setBackgroundImage(UIImage(), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
         navigationAppearance.shadowImage = UIImage()
         navigationAppearance.translucent = false
+        UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
         
         // Window styling
         application.statusBarStyle = UIStatusBarStyle.LightContent

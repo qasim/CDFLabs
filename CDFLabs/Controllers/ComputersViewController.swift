@@ -20,29 +20,18 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         super.loadView()
         
         self.labData = [
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2270", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 3200", avail: 0, busy: 0, total: 0, percent: 0.0, timestamp: "")
+            Lab(lab: "BA 2270", avail: 27, busy: 5, total: 32, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 3185", avail: 16, busy: 4, total: 20, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 3175", avail: 12, busy: 5, total: 17, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 3165", avail: 2, busy: 23, total: 25, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2210", avail: 13, busy: 13, total: 26, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2250", avail: 19, busy: 14, total: 33, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 3250", avail: 6, busy: 25, total: 31, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2175", avail: 4, busy: 23, total: 27, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2185", avail: 19, busy: 2, total: 21, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2165", avail: 3, busy: 14, total: 17, percent: 0.0, timestamp: ""),
+            Lab(lab: "NX", avail: 16, busy: 14, total: 30, percent: 0.0, timestamp: ""),
+            Lab(lab: "GB 215", avail: 32, busy: 3, total: 35, percent: 0.0, timestamp: ""),
         ]
         
         self.loadContentView()
@@ -67,7 +56,6 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|[tableView]|", options: .AlignAllTop, metrics: nil, views: viewsDict))
-        
     }
     
     func loadTableView() {
@@ -75,6 +63,10 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
 
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.tableView?.addSubview(refreshControl)
         
         self.tableView?.reloadData()
     }
@@ -89,6 +81,15 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return LabTable.cellHeight + LabTable.cellPadding
+    }
+    
+    func refresh() {
+        // TODO
+    }
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        refresh()
+        refreshControl.endRefreshing()
     }
     
     override func viewDidLoad() {
