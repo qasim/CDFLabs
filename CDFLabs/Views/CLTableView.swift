@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabTableView: UITableView {
+class CLTableView: UITableView {
     
     init() {
         super.init(frame: UIScreen.mainScreen().bounds, style: .Plain)
@@ -20,7 +20,7 @@ class LabTableView: UITableView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.separatorStyle = .None
         self.allowsSelection = false
-        self.contentInset = UIEdgeInsetsMake(LabTable.cellPadding, 0, 0, 0)
+        self.contentInset = UIEdgeInsetsMake(CLTable.cellPadding, 0, 0, 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

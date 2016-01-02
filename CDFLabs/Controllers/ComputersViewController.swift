@@ -20,18 +20,18 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         super.loadView()
         
         self.labData = [
-            Lab(lab: "BA 2270", avail: 27, busy: 5, total: 32, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 3185", avail: 16, busy: 4, total: 20, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 3175", avail: 12, busy: 5, total: 17, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 3165", avail: 2, busy: 23, total: 25, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2210", avail: 13, busy: 13, total: 26, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2250", avail: 19, busy: 14, total: 33, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 3250", avail: 6, busy: 25, total: 31, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2175", avail: 4, busy: 23, total: 27, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2185", avail: 19, busy: 2, total: 21, percent: 0.0, timestamp: ""),
-            Lab(lab: "BA 2165", avail: 3, busy: 14, total: 17, percent: 0.0, timestamp: ""),
-            Lab(lab: "NX", avail: 16, busy: 14, total: 30, percent: 0.0, timestamp: ""),
-            Lab(lab: "GB 215", avail: 32, busy: 3, total: 35, percent: 0.0, timestamp: ""),
+            Lab(lab: "BA 2270", avail: 27, busy: 5, total: 32, timestamp: ""),
+            Lab(lab: "BA 3185", avail: 16, busy: 4, total: 20, timestamp: ""),
+            Lab(lab: "BA 3175", avail: 12, busy: 5, total: 17, timestamp: ""),
+            Lab(lab: "BA 3165", avail: 2, busy: 23, total: 25, timestamp: ""),
+            Lab(lab: "BA 2210", avail: 13, busy: 13, total: 26, timestamp: ""),
+            Lab(lab: "BA 2250", avail: 19, busy: 14, total: 33, timestamp: ""),
+            Lab(lab: "BA 3250", avail: 6, busy: 25, total: 31, timestamp: ""),
+            Lab(lab: "BA 2175", avail: 0, busy: 27, total: 27, timestamp: ""),
+            Lab(lab: "BA 2185", avail: 19, busy: 2, total: 21, timestamp: ""),
+            Lab(lab: "BA 2165", avail: 3, busy: 14, total: 17, timestamp: ""),
+            Lab(lab: "NX",      avail: 16, busy: 14, total: 30, timestamp: ""),
+            Lab(lab: "GB 215",  avail: 32, busy: 3, total: 35, timestamp: ""),
         ]
         
         self.loadContentView()
@@ -59,7 +59,7 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func loadTableView() {
-        self.tableView = LabTableView()
+        self.tableView = CLTableView()
 
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
@@ -80,28 +80,10 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return LabTable.cellHeight + LabTable.cellPadding
-    }
-    
-    func refresh() {
-        // TODO
+        return CLTable.cellHeight + CLTable.cellPadding
     }
     
     func refresh(refreshControl: UIRefreshControl) {
-        refresh()
         refreshControl.endRefreshing()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
-    }
-
 }

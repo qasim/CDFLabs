@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C4F9ABE1C34D3EA00ED0400 /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */; };
 		9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */; };
-		9C4F9AC61C35C73A00ED0400 /* LabTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC51C35C73A00ED0400 /* LabTableView.swift */; };
+		9C4F9AC61C35C73A00ED0400 /* CLTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */; };
 		9C4F9AC81C35D7D700ED0400 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC71C35D7D700ED0400 /* Constants.swift */; };
 		9C52EABB1C31D0FD007CC685 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EAB91C31D0FD007CC685 /* MainController.swift */; };
 		9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */; };
@@ -21,6 +21,8 @@
 		9C7904DC1C26650B00FFE0C6 /* CDFLabsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904DB1C26650B00FFE0C6 /* CDFLabsTests.swift */; };
 		9C7904E71C26650B00FFE0C6 /* CDFLabsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904E61C26650B00FFE0C6 /* CDFLabsUITests.swift */; };
 		9C7E5C9B1C33376800650437 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E5C9A1C33376800650437 /* Extensions.swift */; };
+		9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FF91C3864F9002B210C /* Printer.swift */; };
+		9CEA0FFC1C3865B6002B210C /* PrinterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 /* Begin PBXFileReference section */
 		9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lab.swift; path = Models/Lab.swift; sourceTree = "<group>"; };
 		9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabTableViewCell.swift; path = Views/LabTableViewCell.swift; sourceTree = "<group>"; };
-		9C4F9AC51C35C73A00ED0400 /* LabTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabTableView.swift; path = Views/LabTableView.swift; sourceTree = "<group>"; };
+		9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLTableView.swift; path = Views/CLTableView.swift; sourceTree = "<group>"; };
 		9C4F9AC71C35D7D700ED0400 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants.swift; sourceTree = "<group>"; };
 		9C52EAB91C31D0FD007CC685 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainController.swift; path = Controllers/MainController.swift; sourceTree = "<group>"; };
 		9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputersViewController.swift; path = Controllers/ComputersViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 		9C7904E61C26650B00FFE0C6 /* CDFLabsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFLabsUITests.swift; sourceTree = "<group>"; };
 		9C7904E81C26650B00FFE0C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C7E5C9A1C33376800650437 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utils/Extensions.swift; sourceTree = "<group>"; };
+		9CEA0FF91C3864F9002B210C /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Printer.swift; path = Models/Printer.swift; sourceTree = "<group>"; };
+		9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrinterTableViewCell.swift; path = Views/PrinterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */,
+				9CEA0FF91C3864F9002B210C /* Printer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -120,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */,
-				9C4F9AC51C35C73A00ED0400 /* LabTableView.swift */,
+				9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */,
+				9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -311,8 +317,10 @@
 			files = (
 				9C52EABB1C31D0FD007CC685 /* MainController.swift in Sources */,
 				9C52EAC21C31D214007CC685 /* LocationsViewController.swift in Sources */,
-				9C4F9AC61C35C73A00ED0400 /* LabTableView.swift in Sources */,
+				9C4F9AC61C35C73A00ED0400 /* CLTableView.swift in Sources */,
 				9C52EAC01C31D20B007CC685 /* PrintersViewController.swift in Sources */,
+				9CEA0FFC1C3865B6002B210C /* PrinterTableViewCell.swift in Sources */,
+				9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */,
 				9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */,
 				9C4F9AC81C35D7D700ED0400 /* Constants.swift in Sources */,
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,
