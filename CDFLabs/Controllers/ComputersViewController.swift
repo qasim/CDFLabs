@@ -88,7 +88,7 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func refresh() {
-        self.tableView?.setContentOffset(CGPointMake(0, 0 - (self.tableView?.contentInset.top)! - self.refreshControl!.frame.size.height), animated: true)
+        self.tableView?.setContentOffset(CGPointMake(0, 0 - self.tableView!.contentInset.top - self.refreshControl!.frame.size.height), animated: true)
         self.refreshControl!.beginRefreshing()
         self.refresh(self.refreshControl!)
     }
