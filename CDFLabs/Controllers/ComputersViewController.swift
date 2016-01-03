@@ -11,7 +11,8 @@ import UIKit
 class ComputersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
     var contentViewController: UIViewController?
-    var sortSegmentedControl: UISegmentedControl?
+    var refreshControl: UIRefreshControl?
+    var refreshButton: UIBarButtonItem?
     
     var labData: [Lab] = []
     var tableView: UITableView?
@@ -36,6 +37,9 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         
         self.loadContentView()
         self.pushViewController(self.contentViewController!, animated: false)
+        
+        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
+        self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
     }
     
     func loadContentView() {
@@ -64,9 +68,9 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
-        self.tableView?.addSubview(refreshControl)
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.tableView?.addSubview(self.refreshControl!)
         
         self.tableView?.reloadData()
     }
@@ -83,7 +87,19 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         return CLTable.cellHeight + CLTable.cellPadding
     }
     
+    func refresh() {
+        self.tableView?.setContentOffset(CGPointMake(0, (self.tableView?.contentOffset.y)! - self.refreshControl!.frame.size.height), animated: true)
+        self.refreshControl!.beginRefreshing()
+        self.refresh(self.refreshControl!)
+    }
+    
     func refresh(refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
+        // Simulate page load
+        self.refreshButton?.enabled = false
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 1))
+        dispatch_after(delayTime, dispatch_get_main_queue()){
+            refreshControl.endRefreshing()
+            self.refreshButton?.enabled = true
+        }
     }
 }

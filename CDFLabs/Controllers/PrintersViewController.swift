@@ -11,6 +11,8 @@ import UIKit
 class PrintersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
     var contentViewController: UIViewController?
+    var refreshControl: UIRefreshControl?
+    var refreshButton: UIBarButtonItem?
     
     var printerData: [Printer] = []
     var tableView: UITableView?
@@ -26,6 +28,9 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         
         self.loadContentView()
         self.pushViewController(contentViewController!, animated: false)
+        
+        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
+        self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
     }
     
     func loadContentView() {
@@ -54,9 +59,9 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
-        self.tableView?.addSubview(refreshControl)
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.tableView?.addSubview(refreshControl!)
         
         self.tableView?.reloadData()
     }
@@ -70,10 +75,22 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CLTable.cellHeight + CLTable.cellPadding
+        return CLTable.printerCellHeight + CLTable.cellPadding
+    }
+    
+    func refresh() {
+        self.tableView?.setContentOffset(CGPointMake(0, (self.tableView?.contentOffset.y)! - self.refreshControl!.frame.size.height), animated: true)
+        self.refreshControl!.beginRefreshing()
+        self.refresh(self.refreshControl!)
     }
     
     func refresh(refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
+        // Simulate page load
+        self.refreshButton?.enabled = false
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 1))
+        dispatch_after(delayTime, dispatch_get_main_queue()){
+            refreshControl.endRefreshing()
+            self.refreshButton?.enabled = true
+        }
     }
 }
