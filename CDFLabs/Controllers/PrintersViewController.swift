@@ -21,12 +21,14 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         super.loadView()
         
         self.printerData = [
+            Printer(name: "P2210b", description: "Kyocera Network Printer in BA2210", jobs: []),
+            Printer(name: "P3175a", description: "Kyocera Network Printer in BA3175", jobs: [
+                PrintJob()
+            ]),
             Printer(name: "P2210a", description: "Kyocera Network Printer in BA2210", jobs: [
                 PrintJob(),
                 PrintJob()
-            ]),
-            Printer(name: "P2210b", description: "Kyocera Network Printer in BA2210", jobs: []),
-            Printer(name: "P3175a", description: "Kyocera Network Printer in BA3175", jobs: [])
+            ])
         ]
         
         self.loadContentView()

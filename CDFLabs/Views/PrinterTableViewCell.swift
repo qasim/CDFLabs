@@ -70,7 +70,11 @@ class PrinterTableViewCell: UITableViewCell {
         printerDetailsLabel.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
         
         if printer.jobs.count > 0 {
-            printerDetailsLabel.text = "\(printer.jobs.count) jobs queued (34 pages left)"
+            var s = "s"
+            if printer.jobs.count == 1 {
+                s = ""
+            }
+            printerDetailsLabel.text = "\(printer.jobs.count) job\(s) queued (34 pages left)"
         } else {
             printerDetailsLabel.text = "No jobs queued"
         }

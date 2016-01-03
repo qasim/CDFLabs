@@ -66,7 +66,7 @@
 		9C7E5C9A1C33376800650437 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utils/Extensions.swift; sourceTree = "<group>"; };
 		9CEA0FF91C3864F9002B210C /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Printer.swift; path = Models/Printer.swift; sourceTree = "<group>"; };
 		9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrinterTableViewCell.swift; path = Views/PrinterTableViewCell.swift; sourceTree = "<group>"; };
-		9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
+		9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintJob.swift; path = Models/PrintJob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
