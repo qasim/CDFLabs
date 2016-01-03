@@ -54,21 +54,27 @@ class PrinterTableViewCell: UITableViewCell {
         printerNameLabel.translatesAutoresizingMaskIntoConstraints = false
         printerNameLabel.textColor = UIColor.blackColor()
         printerNameLabel.font = UIFont.systemFontOfSize(24.0, weight: UIFontWeightLight)
-        printerNameLabel.text = "P2210a"
+        printerNameLabel.text = printer.name
         insetView.addSubview(printerNameLabel)
         
         let printerDescLabel = UILabel()
         printerDescLabel.translatesAutoresizingMaskIntoConstraints = false
         printerDescLabel.textColor = UIColor.darkGrayColor()
         printerDescLabel.font = UIFont.systemFontOfSize(18.0, weight: UIFontWeightLight)
-        printerDescLabel.text = "Kyocera Network Printer in BA2210"
+        printerDescLabel.text = printer.description
         insetView.addSubview(printerDescLabel)
         
         let printerDetailsLabel = UILabel()
         printerDetailsLabel.translatesAutoresizingMaskIntoConstraints = false
         printerDetailsLabel.textColor = UIColor.grayColor()
         printerDetailsLabel.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
-        printerDetailsLabel.text = "2 jobs queued (34 pages left)"
+        
+        if printer.jobs.count > 0 {
+            printerDetailsLabel.text = "\(printer.jobs.count) jobs queued (34 pages left)"
+        } else {
+            printerDetailsLabel.text = "No jobs queued"
+        }
+        
         insetView.addSubview(printerDetailsLabel)
         
         let viewsDict: [String: AnyObject] = [
@@ -90,10 +96,10 @@ class PrinterTableViewCell: UITableViewCell {
             "|-16-[printerNameLabel]", options: options, metrics: metricsDict, views: viewsDict))
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|-16-[printerDescLabel]", options: options, metrics: metricsDict, views: viewsDict))
+            "|-16-[printerDescLabel]-16-|", options: options, metrics: metricsDict, views: viewsDict))
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|-16-[freeView(44)]-[printerDetailsLabel]", options: options, metrics: metricsDict, views: viewsDict))
+            "|-16-[freeView(46)]-[printerDetailsLabel]", options: options, metrics: metricsDict, views: viewsDict))
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[freeView(20)]", options: options, metrics: metricsDict, views: viewsDict))
@@ -110,7 +116,6 @@ class PrinterTableViewCell: UITableViewCell {
     func createFreeView(printer: Printer) -> UIView {
         let freeView = UIView()
         freeView.translatesAutoresizingMaskIntoConstraints = false
-        freeView.backgroundColor = UIColor.cdfYellowColor()
         freeView.layer.cornerRadius = CLTable.cellCornerRadius
         
         let freeTextLabel = UILabel()
@@ -118,8 +123,16 @@ class PrinterTableViewCell: UITableViewCell {
         freeTextLabel.textColor = UIColor.whiteColor()
         freeTextLabel.textAlignment = .Center
         freeTextLabel.font = UIFont.systemFontOfSize(14.0)
-        freeTextLabel.text = "BUSY"
+        
         freeView.addSubview(freeTextLabel)
+        
+        if printer.jobs.count > 0 {
+            freeView.backgroundColor = UIColor.cdfYellowColor()
+            freeTextLabel.text = "BUSY"
+        } else {
+            freeView.backgroundColor = UIColor.cdfGreenColor()
+            freeTextLabel.text = "FREE"
+        }
         
         let viewsDict: [String: AnyObject] = [
             "freeTextLabel": freeTextLabel

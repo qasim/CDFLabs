@@ -23,6 +23,7 @@
 		9C7E5C9B1C33376800650437 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E5C9A1C33376800650437 /* Extensions.swift */; };
 		9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FF91C3864F9002B210C /* Printer.swift */; };
 		9CEA0FFC1C3865B6002B210C /* PrinterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */; };
+		9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9C7E5C9A1C33376800650437 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utils/Extensions.swift; sourceTree = "<group>"; };
 		9CEA0FF91C3864F9002B210C /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Printer.swift; path = Models/Printer.swift; sourceTree = "<group>"; };
 		9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrinterTableViewCell.swift; path = Views/PrinterTableViewCell.swift; sourceTree = "<group>"; };
+		9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */,
 				9CEA0FF91C3864F9002B210C /* Printer.swift */,
+				9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				9CEA0FFC1C3865B6002B210C /* PrinterTableViewCell.swift in Sources */,
 				9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */,
 				9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */,
+				9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */,
 				9C4F9AC81C35D7D700ED0400 /* Constants.swift in Sources */,
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,
 				9C7904C71C26650B00FFE0C6 /* AppDelegate.swift in Sources */,

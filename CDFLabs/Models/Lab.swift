@@ -10,7 +10,7 @@ import Foundation
 
 public class Lab {
     
-    var lab: String
+    var name: String
     var timestamp: String
  
     var avail: Int
@@ -20,7 +20,7 @@ public class Lab {
     var percent: Int
     
     public init() {
-        self.lab = ""
+        self.name = ""
         self.avail = 0
         self.busy = 0
         self.total = 0
@@ -28,8 +28,8 @@ public class Lab {
         self.timestamp = ""
     }
     
-    public init(lab: String, avail: Int, busy: Int, total: Int, timestamp: String) {
-        self.lab = lab
+    public init(name: String, avail: Int, busy: Int, total: Int, timestamp: String) {
+        self.name = name
         self.avail = avail
         self.busy = busy
         self.total = total

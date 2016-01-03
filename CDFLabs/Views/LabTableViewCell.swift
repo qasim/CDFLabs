@@ -11,7 +11,7 @@ import UIKit
 class LabTableViewCell: UITableViewCell {
     
     init(lab: Lab) {
-        super.init(style: .Default, reuseIdentifier: lab.lab)
+        super.init(style: .Default, reuseIdentifier: lab.name)
 
         self.backgroundColor = UIColor.cdfGreyColor()
         
@@ -53,7 +53,7 @@ class LabTableViewCell: UITableViewCell {
         labNameLabel.translatesAutoresizingMaskIntoConstraints = false
         labNameLabel.textColor = UIColor.blackColor()
         labNameLabel.font = UIFont.systemFontOfSize(24.0, weight: UIFontWeightLight)
-        labNameLabel.text = lab.lab
+        labNameLabel.text = lab.name
         insetView.addSubview(labNameLabel)
         
         let labDetailsLabel = UILabel()

@@ -10,30 +10,19 @@ import Foundation
 
 public class Printer {
     
-    var lab: String
-    var timestamp: String
-    
-    var avail: Int
-    var busy: Int
-    var total: Int
-    
-    var percent: Double
+    var name: String
+    var description: String
+    var jobs: [PrintJob]
     
     public init() {
-        self.lab = ""
-        self.avail = 0
-        self.busy = 0
-        self.total = 0
-        self.percent = 0
-        self.timestamp = ""
+        self.name = ""
+        self.description = ""
+        self.jobs = []
     }
     
-    public init(lab: String, avail: Int, busy: Int, total: Int, percent: Double, timestamp: String) {
-        self.lab = lab
-        self.avail = avail
-        self.busy = busy
-        self.total = total
-        self.percent = percent
-        self.timestamp = timestamp
+    public init(name: String, description: String, jobs: [PrintJob]) {
+        self.name = name
+        self.description = description
+        self.jobs = jobs
     }
 }
