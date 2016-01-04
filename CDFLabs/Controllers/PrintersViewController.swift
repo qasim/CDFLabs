@@ -120,8 +120,12 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                 }
             }
             
-            self.tableView?.reloadData()
+            CATransaction.begin()
+            CATransaction.setCompletionBlock({
+                self.tableView?.reloadData()
+            })
             refreshControl.endRefreshing()
+            CATransaction.commit()
         }
     }
 }
