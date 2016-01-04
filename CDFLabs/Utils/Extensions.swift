@@ -34,3 +34,16 @@ extension UIColor {
         return UIColor(red: 191 / 255, green: 63 / 255, blue: 0, alpha: 1.0)
     }
 }
+
+extension String {
+    
+    var titleCaseString: String {
+        var s = self
+        s.replaceRange(s.startIndex...s.startIndex, with: String(s[s.startIndex]).capitalizedString)
+        return s
+    }
+    
+    func replace(target: String, withString: String) -> String {
+        return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+}

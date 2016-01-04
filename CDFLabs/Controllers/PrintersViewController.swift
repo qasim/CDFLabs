@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Just
 
 class PrintersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,7 +21,7 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     override func loadView() {
         super.loadView()
         
-        self.printerData = [
+        /*self.printerData = [
             Printer(name: "P2210b", description: "Kyocera Network Printer in BA2210", jobs: []),
             Printer(name: "P3175a", description: "Kyocera Network Printer in BA3175", jobs: [
                 PrintJob()
@@ -29,13 +30,16 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                 PrintJob(),
                 PrintJob()
             ])
-        ]
+        ]*/
         
         self.loadContentView()
+        
         self.pushViewController(contentViewController!, animated: false)
         
         self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
         self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
+        
+        self.refresh()
     }
     
     func loadContentView() {
@@ -90,12 +94,34 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     }
     
     func refresh(refreshControl: UIRefreshControl) {
-        // Simulate page load
-        self.refreshButton?.enabled = false
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 1))
-        dispatch_after(delayTime, dispatch_get_main_queue()){
+        Just.get("http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json") { (r) in
+            if r.ok {
+                if let json = r.json as? [String:AnyObject] {
+                    self.printerData = []
+                    let printers = json["printers"] as! [String:AnyObject]
+                    
+                    for (rawName, info) in printers {
+                        let name = rawName.titleCaseString
+                        
+                        let rawJobs = info["jobs"] as! [[String:String]]
+                        var jobs: [PrintJob] = []
+                        for job in rawJobs {
+                            if job["rank"] != "done" {
+                                jobs.append(PrintJob())
+                            }
+                        }
+                        
+                        var description = info["description"] as! String
+                        description = description.replace("'", withString: "")
+                        
+                        let printer = Printer(name: name, description: description, jobs: jobs)
+                        self.printerData.append(printer)
+                    }
+                }
+            }
+            
+            self.tableView?.reloadData()
             refreshControl.endRefreshing()
-            self.refreshButton?.enabled = true
         }
     }
 }
