@@ -74,7 +74,7 @@ class PrinterTableViewCell: UITableViewCell {
             if printer.jobs.count == 1 {
                 s = ""
             }
-            printerDetailsLabel.text = "\(printer.jobs.count) job\(s) queued (34 pages left)"
+            printerDetailsLabel.text = "\(printer.jobs.count) job\(s) queued (34 pages)"
         } else {
             printerDetailsLabel.text = "No jobs queued"
         }
