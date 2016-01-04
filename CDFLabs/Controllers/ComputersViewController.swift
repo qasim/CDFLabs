@@ -95,11 +95,9 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     
     func refresh(refreshControl: UIRefreshControl) {
         // Simulate page load
-        self.refreshButton?.enabled = false
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 1))
         dispatch_after(delayTime, dispatch_get_main_queue()){
             refreshControl.endRefreshing()
-            self.refreshButton?.enabled = true
         }
     }
 }
