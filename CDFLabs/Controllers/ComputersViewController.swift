@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Just
 
 class ComputersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,7 +21,7 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     override func loadView() {
         super.loadView()
         
-        self.labData = [
+        /*self.labData = [
             Lab(name: "BA 2270", avail: 27, busy: 5,  total: 32, timestamp: ""),
             Lab(name: "BA 3185", avail: 16, busy: 4,  total: 20, timestamp: ""),
             Lab(name: "BA 3175", avail: 12, busy: 5,  total: 17, timestamp: ""),
@@ -33,13 +34,15 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
             Lab(name: "BA 2165", avail: 3,  busy: 14, total: 17, timestamp: ""),
             Lab(name: "NX",      avail: 16, busy: 14, total: 30, timestamp: ""),
             Lab(name: "GB 215",  avail: 32, busy: 3,  total: 35, timestamp: "")
-        ]
+        ]*/
         
         self.loadContentView()
         self.pushViewController(self.contentViewController!, animated: false)
         
         self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
         self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
+        
+        self.refresh()
     }
     
     func loadContentView() {
@@ -88,16 +91,35 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func refresh() {
-        self.tableView?.setContentOffset(CGPointMake(0, 0 - self.tableView!.contentInset.top - self.refreshControl!.frame.size.height), animated: true)
+        self.tableView?.setContentOffset(CGPointMake(0, self.tableView!.contentOffset.y - self.refreshControl!.frame.size.height), animated: true)
         self.refreshControl!.beginRefreshing()
         self.refresh(self.refreshControl!)
     }
     
     func refresh(refreshControl: UIRefreshControl) {
-        // Simulate page load
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 1))
-        dispatch_after(delayTime, dispatch_get_main_queue()){
+        Just.get("http://www.cdf.toronto.edu/~g3cheunh/cdflabs.json") { (r) in
+            if r.ok {
+                if let json = r.json as? [String:AnyObject] {
+                    if let labs = json["labs"] as? [[String: AnyObject]] {
+                        self.labData = []
+                        for lab in labs {
+                            let name = lab["name"] as! String
+                            let avail = lab["available"] as! Int
+                            let busy = lab["busy"] as! Int
+                            let total = lab["total"] as! Int
+                            let timestamp = lab["timestamp"] as! String
+                            self.labData.append(Lab(name: name, avail: avail, busy: busy, total: total, timestamp: timestamp))
+                        }
+                    }
+                }
+            }
+            
+            CATransaction.begin()
+            CATransaction.setCompletionBlock({
+                self.tableView?.reloadData()
+            })
             refreshControl.endRefreshing()
+            CATransaction.commit()
         }
     }
 }
