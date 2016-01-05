@@ -64,6 +64,8 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     
     func loadTableView() {
         self.tableView = CLTableView()
+        self.tableView?.estimatedRowHeight = CLTable.printerCellHeight
+        self.tableView?.rowHeight = UITableViewAutomaticDimension
         
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
@@ -81,10 +83,6 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return PrinterTableViewCell(printer: self.printerData[indexPath.row])
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CLTable.printerCellHeight + CLTable.cellPadding
     }
     
     func refresh() {

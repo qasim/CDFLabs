@@ -34,7 +34,7 @@ class PrinterTableViewCell: UITableViewCell {
             "|-cellPadding-[insetView]-cellPadding-|", options: options, metrics: metricsDict, views: viewsDict))
         
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|[insetView(cellHeight)]-cellPadding-|", options: options, metrics: metricsDict, views: viewsDict))
+            "V:|[insetView]-cellPadding-|", options: options, metrics: metricsDict, views: viewsDict))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,6 +61,8 @@ class PrinterTableViewCell: UITableViewCell {
         printerDescLabel.translatesAutoresizingMaskIntoConstraints = false
         printerDescLabel.textColor = UIColor.darkGrayColor()
         printerDescLabel.font = UIFont.systemFontOfSize(18.0, weight: UIFontWeightLight)
+        printerDescLabel.lineBreakMode = .ByWordWrapping
+        printerDescLabel.numberOfLines = 0
         printerDescLabel.text = printer.description
         insetView.addSubview(printerDescLabel)
         
