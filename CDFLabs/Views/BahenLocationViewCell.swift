@@ -62,6 +62,10 @@ class BahenLocationViewCell: UITableViewCell {
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.textColor = UIColor.grayColor()
         locationLabel.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
+        let tapListener = UITapGestureRecognizer(target: self, action: "openMaps")
+        tapListener.numberOfTapsRequired = 1
+        locationLabel.addGestureRecognizer(tapListener)
+        locationLabel.userInteractionEnabled = true
         locationLabel.text = "40 St George Street, Toronto, ON M5S 2E4"
         insetView.addSubview(locationLabel)
         
@@ -149,5 +153,15 @@ class BahenLocationViewCell: UITableViewCell {
             "V:|-14-[titleLabel]-cellPadding-[locationLabel]-[descriptionLabel]-32-[secondFloorLabel]-[secondFloorImage(secondFloorHeight)]-32-[thirdFloorLabel]-[thirdFloorImage(thirdFloorHeight)]|", options: options, metrics: metricsDict, views: viewsDict))
         
         return insetView
+    }
+    
+    func openMaps() {
+        if UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps://")!) {
+            UIApplication.sharedApplication().openURL(NSURL(string:
+                "comgooglemaps://?q=Bahen+Centre+for+Information+Technology")!)
+        } else {
+            UIApplication.sharedApplication().openURL(NSURL(string:
+                "http://maps.apple.com/?q=Bahen+Centre+for+Information+Technology")!)
+        }
     }
 }
