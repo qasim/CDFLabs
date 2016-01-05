@@ -47,3 +47,16 @@ extension String {
         return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
 }
+
+extension UIImageView {
+    
+    var fittedSize: CGSize {
+        let imgSize = self.image?.size
+        let desiredWidth = UIScreen.mainScreen().bounds.size.width - (2 * CLTable.cellPadding) - 32
+        
+        let ratio = desiredWidth / imgSize!.width
+        let desiredHeight = ratio * imgSize!.height
+        
+        return CGSize(width: desiredWidth, height: desiredHeight)
+    }
+}

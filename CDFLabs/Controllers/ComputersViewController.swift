@@ -58,11 +58,13 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
             "tableView": self.tableView!
         ]
         
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|[tableView]|", options: .AlignAllLeft, metrics: nil, views: viewsDict))
+        let options = NSLayoutFormatOptions(rawValue: 0)
         
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|[tableView]|", options: .AlignAllTop, metrics: nil, views: viewsDict))
+            "|[tableView]|", options: options, metrics: nil, views: viewsDict))
+        
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:|[tableView]|", options: options, metrics: nil, views: viewsDict))
     }
     
     func loadTableView() {

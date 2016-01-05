@@ -12,7 +12,7 @@ import UIKit
 class PrinterTableViewCell: UITableViewCell {
     
     init(printer: Printer) {
-        super.init(style: .Default, reuseIdentifier: "")
+        super.init(style: .Default, reuseIdentifier: printer.name)
         
         self.backgroundColor = UIColor.cdfGreyColor()
         
