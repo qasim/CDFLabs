@@ -10,8 +10,58 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.20784313725490197" green="0.49019607843137253" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-            <color key="tintColor" red="0.20784313725490197" green="0.49019607843137253" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CDF Labs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx3-b3-8dD">
+                    <rect key="frame" x="189" y="263" width="220" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="hnh-3p-oQE"/>
+                        <constraint firstAttribute="height" constant="35" id="vck-DN-TQh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="29"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="UNIVERSITY OF TORONTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6C-SV-ahg">
+                    <rect key="frame" x="189" y="309" width="226" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Rmc-Kq-oWw"/>
+                        <constraint firstAttribute="width" constant="226" id="eNB-cj-OgN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbs-PL-p0b">
+                    <rect key="frame" x="189" y="300" width="220" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="jr1-WL-lbk"/>
+                        <constraint firstAttribute="width" constant="220" id="pXK-du-KRU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.27450980392156865" green="0.57647058823529407" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" red="0.20784313725490197" green="0.49019607843137253" blue="0.78431372549019607" alpha="0.0" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="v6C-SV-ahg" firstAttribute="leading" secondItem="mx3-b3-8dD" secondAttribute="leading" id="FzR-c0-CMp"/>
+                <constraint firstItem="v6C-SV-ahg" firstAttribute="leading" secondItem="fbs-PL-p0b" secondAttribute="leading" id="O9f-62-SMe"/>
+                <constraint firstItem="fbs-PL-p0b" firstAttribute="centerY" secondItem="mx3-b3-8dD" secondAttribute="centerY" constant="20" id="eXf-6T-iff"/>
+                <constraint firstItem="v6C-SV-ahg" firstAttribute="centerY" secondItem="fbs-PL-p0b" secondAttribute="centerY" constant="19" id="fEn-xS-SeL"/>
+                <constraint firstItem="fbs-PL-p0b" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qfW-44-D3m"/>
+                <constraint firstItem="fbs-PL-p0b" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="v7h-ET-dmG"/>
+                <constraint firstItem="v6C-SV-ahg" firstAttribute="centerY" secondItem="fbs-PL-p0b" secondAttribute="centerY" constant="19" id="yBe-Oz-29v"/>
+                <constraint firstItem="fbs-PL-p0b" firstAttribute="leading" secondItem="mx3-b3-8dD" secondAttribute="leading" id="ytr-Tl-tWd"/>
+                <constraint firstItem="v6C-SV-ahg" firstAttribute="leading" secondItem="mx3-b3-8dD" secondAttribute="leading" id="znR-bl-oHb"/>
+                <constraint firstItem="fbs-PL-p0b" firstAttribute="centerY" secondItem="mx3-b3-8dD" secondAttribute="centerY" constant="20" id="zx0-Vr-igs"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="eXf-6T-iff"/>
+                    <exclude reference="O9f-62-SMe"/>
+                    <exclude reference="fEn-xS-SeL"/>
+                    <exclude reference="znR-bl-oHb"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
