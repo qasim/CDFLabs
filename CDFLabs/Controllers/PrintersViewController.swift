@@ -8,6 +8,7 @@
 
 import UIKit
 import Just
+import KLCPopup
 
 class PrintersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,6 +18,9 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     
     var printerData: [Printer] = []
     var tableView: UITableView?
+    
+    var popupView: InfoPopupView?
+    var popup: KLCPopup?
     
     override func loadView() {
         super.loadView()
@@ -38,6 +42,12 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         
         self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
         self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
+        
+        let infoButton = UIButton(type: .InfoLight)
+        infoButton.tintColor = UIColor.whiteColor()
+        infoButton.addTarget(self, action: "info", forControlEvents: .TouchUpInside)
+        let infoBarButton = UIBarButtonItem(customView: infoButton)
+        self.contentViewController!.navigationItem.leftBarButtonItem = infoBarButton
         
         self.refresh()
     }
@@ -128,5 +138,13 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
             refreshControl.endRefreshing()
             CATransaction.commit()
         }
+    }
+    
+    func info() {
+        if self.popup == nil {
+            self.popupView = InfoPopupView()
+            self.popup = KLCPopup(contentView: self.popupView!)
+        }
+        self.popup!.show()
     }
 }

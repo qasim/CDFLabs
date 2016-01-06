@@ -8,6 +8,7 @@
 
 import UIKit
 import Just
+import KLCPopup
 
 class ComputersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,6 +18,9 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     
     var labData: [Lab] = []
     var tableView: UITableView?
+    
+    var popupView: InfoPopupView?
+    var popup: KLCPopup?
     
     override func loadView() {
         super.loadView()
@@ -41,6 +45,12 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         
         self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
         self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
+        
+        let infoButton = UIButton(type: .InfoLight)
+        infoButton.tintColor = UIColor.whiteColor()
+        infoButton.addTarget(self, action: "info", forControlEvents: .TouchUpInside)
+        let infoBarButton = UIBarButtonItem(customView: infoButton)
+        self.contentViewController!.navigationItem.leftBarButtonItem = infoBarButton
         
         self.refresh()
     }
@@ -122,5 +132,13 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
             refreshControl.endRefreshing()
             CATransaction.commit()
         }
+    }
+    
+    func info() {
+        if self.popup == nil {
+            self.popupView = InfoPopupView()
+            self.popup = KLCPopup(contentView: self.popupView!)
+        }
+        self.popup!.show()
     }
 }
