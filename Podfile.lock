@@ -1,10 +1,13 @@
 PODS:
   - Just (0.4.4)
+  - KLCPopup (1.0)
 
 DEPENDENCIES:
   - Just
+  - KLCPopup (~> 1.0)
 
 SPEC CHECKSUMS:
   Just: 138df59892ea185fbc191986cc733bfd09d62cc0
+  KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
 
 COCOAPODS: 0.39.0
