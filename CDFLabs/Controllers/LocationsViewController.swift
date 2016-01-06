@@ -54,10 +54,14 @@ class LocationsViewController: UINavigationController, UITableViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return BahenLocationViewCell()
+        if indexPath.row == 0 {
+            return BahenLocationViewCell()
+        } else {
+            return NXLocationViewCell()
+        }
     }
 }

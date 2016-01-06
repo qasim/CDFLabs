@@ -25,7 +25,7 @@
 		9CEA0FFC1C3865B6002B210C /* PrinterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */; };
 		9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */; };
 		9CEC53FD1C3C40AA00A4234A /* BahenLocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC53FC1C3C40AA00A4234A /* BahenLocationViewCell.swift */; };
-		9CEC53FF1C3C40B500A4234A /* NXLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC53FE1C3C40B500A4234A /* NXLocationView.swift */; };
+		9CEC53FF1C3C40B500A4234A /* NXLocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC53FE1C3C40B500A4234A /* NXLocationViewCell.swift */; };
 		C2EABE2AC0DFB7A235027B94 /* Pods_CDFLabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D787C4EAFA302CFB8E3EEA /* Pods_CDFLabs.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,7 @@
 		9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrinterTableViewCell.swift; path = Views/PrinterTableViewCell.swift; sourceTree = "<group>"; };
 		9CEA0FFD1C39CAA8002B210C /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintJob.swift; path = Models/PrintJob.swift; sourceTree = "<group>"; };
 		9CEC53FC1C3C40AA00A4234A /* BahenLocationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BahenLocationViewCell.swift; path = Views/BahenLocationViewCell.swift; sourceTree = "<group>"; };
-		9CEC53FE1C3C40B500A4234A /* NXLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NXLocationView.swift; path = Views/NXLocationView.swift; sourceTree = "<group>"; };
+		9CEC53FE1C3C40B500A4234A /* NXLocationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NXLocationViewCell.swift; path = Views/NXLocationViewCell.swift; sourceTree = "<group>"; };
 		C3D787C4EAFA302CFB8E3EEA /* Pods_CDFLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CDFLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC34F3539B42B00E9B9A51E5 /* Pods-CDFLabs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDFLabs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDFLabs/Pods-CDFLabs.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +140,7 @@
 				9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */,
 				9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */,
 				9CEC53FC1C3C40AA00A4234A /* BahenLocationViewCell.swift */,
-				9CEC53FE1C3C40B500A4234A /* NXLocationView.swift */,
+				9CEC53FE1C3C40B500A4234A /* NXLocationViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -405,7 +405,7 @@
 				9C52EAC01C31D20B007CC685 /* PrintersViewController.swift in Sources */,
 				9CEC53FD1C3C40AA00A4234A /* BahenLocationViewCell.swift in Sources */,
 				9CEA0FFC1C3865B6002B210C /* PrinterTableViewCell.swift in Sources */,
-				9CEC53FF1C3C40B500A4234A /* NXLocationView.swift in Sources */,
+				9CEC53FF1C3C40B500A4234A /* NXLocationViewCell.swift in Sources */,
 				9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */,
 				9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */,
 				9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */,
