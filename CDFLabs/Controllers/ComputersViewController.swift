@@ -109,8 +109,7 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
                             let avail = lab["available"] as! Int
                             let busy = lab["busy"] as! Int
                             let total = lab["total"] as! Int
-                            let timestamp = lab["timestamp"] as! String
-                            self.labData.append(Lab(name: name, avail: avail, busy: busy, total: total, timestamp: timestamp))
+                            self.labData.append(Lab(name: name, avail: avail, busy: busy, total: total))
                         }
                     }
                 }

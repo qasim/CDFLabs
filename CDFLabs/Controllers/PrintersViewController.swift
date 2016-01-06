@@ -98,12 +98,13 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
             if r.ok {
                 if let json = r.json as? [String:AnyObject] {
                     self.printerData = []
-                    let printers = json["printers"] as! [String:AnyObject]
+                    let printers = json["printers"] as! [[String:AnyObject]]
                     
-                    for (rawName, info) in printers {
-                        let name = rawName.titleCaseString
+                    for printer in printers {
+                        var name = printer["name"] as! String
+                        name = name.titleCaseString
                         
-                        let rawJobs = info["jobs"] as! [[String:String]]
+                        let rawJobs = printer["jobs"] as! [[String:String]]
                         var jobs: [PrintJob] = []
                         for job in rawJobs {
                             if job["rank"] != "done" {
@@ -111,7 +112,7 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                             }
                         }
                         
-                        var description = info["description"] as! String
+                        var description = printer["description"] as! String
                         description = description.replace("'", withString: "")
                         
                         let printer = Printer(name: name, description: description, jobs: jobs)

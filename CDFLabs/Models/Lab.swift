@@ -11,7 +11,6 @@ import Foundation
 public class Lab {
     
     var name: String
-    var timestamp: String
  
     var avail: Int
     var busy: Int
@@ -25,15 +24,13 @@ public class Lab {
         self.busy = 0
         self.total = 0
         self.percent = 0
-        self.timestamp = ""
     }
     
-    public init(name: String, avail: Int, busy: Int, total: Int, timestamp: String) {
+    public init(name: String, avail: Int, busy: Int, total: Int) {
         self.name = name
         self.avail = avail
         self.busy = busy
         self.total = total
         self.percent = Int(Double(round(100 * (Double(busy) / Double(total))) / 100) * 100)
-        self.timestamp = timestamp
     }
 }
