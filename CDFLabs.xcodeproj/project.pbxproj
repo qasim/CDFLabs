@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C36B09E1C3DB73F002B2120 /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B09D1C3DB73F002B2120 /* InfoPopupView.swift */; };
 		9C4F9ABE1C34D3EA00ED0400 /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */; };
 		9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */; };
 		9C4F9AC61C35C73A00ED0400 /* CLTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		1E51D842B413DB9E78A473B2 /* Pods-CDFLabs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDFLabs.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDFLabs/Pods-CDFLabs.release.xcconfig"; sourceTree = "<group>"; };
+		9C36B09D1C3DB73F002B2120 /* InfoPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoPopupView.swift; path = Views/InfoPopupView.swift; sourceTree = "<group>"; };
 		9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lab.swift; path = Models/Lab.swift; sourceTree = "<group>"; };
 		9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabTableViewCell.swift; path = Views/LabTableViewCell.swift; sourceTree = "<group>"; };
 		9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLTableView.swift; path = Views/CLTableView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */,
 				9CEA0FFB1C3865B6002B210C /* PrinterTableViewCell.swift */,
 				9CEC53FC1C3C40AA00A4234A /* BahenLocationViewCell.swift */,
+				9C36B09D1C3DB73F002B2120 /* InfoPopupView.swift */,
 				9CEC53FE1C3C40B500A4234A /* NXLocationViewCell.swift */,
 			);
 			name = Views;
@@ -408,6 +411,7 @@
 				9CEC53FF1C3C40B500A4234A /* NXLocationViewCell.swift in Sources */,
 				9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */,
 				9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */,
+				9C36B09E1C3DB73F002B2120 /* InfoPopupView.swift in Sources */,
 				9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */,
 				9C4F9AC81C35D7D700ED0400 /* Constants.swift in Sources */,
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,
