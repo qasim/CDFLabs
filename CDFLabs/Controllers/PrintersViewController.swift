@@ -122,8 +122,7 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                             }
                         }
                         
-                        var description = printer["description"] as! String
-                        description = description.replace("'", withString: "")
+                        let description = printer["description"] as! String
                         
                         let printer = Printer(name: name, description: description, jobs: jobs)
                         self.printerData.append(printer)
