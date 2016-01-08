@@ -76,7 +76,17 @@ class PrinterTableViewCell: UITableViewCell {
             if printer.jobs.count == 1 {
                 s = ""
             }
-            printerDetailsLabel.text = "\(printer.jobs.count) job\(s) queued (34 pages)"
+            
+            var size: Int = 0
+            for printJob in printer.jobs {
+                size += Int(ceil(printJob.size))
+            }
+            
+            let f = NSNumberFormatter()
+            f.numberStyle = .DecimalStyle
+            let sizeString = f.stringFromNumber(size)!
+            
+            printerDetailsLabel.text = "\(printer.jobs.count) job\(s) queued (\(sizeString) KB)"
         } else {
             printerDetailsLabel.text = "No jobs queued"
         }

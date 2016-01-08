@@ -25,16 +25,16 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     override func loadView() {
         super.loadView()
         
-        /*self.printerData = [
+        /* self.printerData = [
             Printer(name: "P2210b", description: "Kyocera Network Printer in BA2210", jobs: []),
             Printer(name: "P3175a", description: "Kyocera Network Printer in BA3175", jobs: [
-                PrintJob()
+                PrintJob(rank: "n/a", size: "223422")
             ]),
             Printer(name: "P2210a", description: "Kyocera Network Printer in BA2210", jobs: [
                 PrintJob(),
                 PrintJob()
             ])
-        ]*/
+        ] */
         
         self.loadContentView()
         
@@ -118,7 +118,7 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                         var jobs: [PrintJob] = []
                         for job in rawJobs {
                             if job["rank"] != "done" {
-                                jobs.append(PrintJob())
+                                jobs.append(PrintJob(rank: job["rank"]!, size: job["size"]!))
                             }
                         }
                         
