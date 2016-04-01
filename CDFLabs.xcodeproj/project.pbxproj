@@ -17,6 +17,7 @@
 		9C52EAC01C31D20B007CC685 /* PrintersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */; };
 		9C52EAC21C31D214007CC685 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52EAC11C31D214007CC685 /* LocationsViewController.swift */; };
 		9C52EAC61C3211B8007CC685 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C52EAC51C3211B8007CC685 /* LaunchScreen.xib */; };
+		9C5428E21CAF0EC500348DF2 /* PrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5428E11CAF0EC500348DF2 /* PrinterViewController.swift */; };
 		9C7904C71C26650B00FFE0C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904C61C26650B00FFE0C6 /* AppDelegate.swift */; };
 		9C7904CE1C26650B00FFE0C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C7904CD1C26650B00FFE0C6 /* Assets.xcassets */; };
 		9C7904DC1C26650B00FFE0C6 /* CDFLabsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904DB1C26650B00FFE0C6 /* CDFLabsTests.swift */; };
@@ -59,6 +60,7 @@
 		9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintersViewController.swift; path = Controllers/PrintersViewController.swift; sourceTree = "<group>"; };
 		9C52EAC11C31D214007CC685 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsViewController.swift; path = Controllers/LocationsViewController.swift; sourceTree = "<group>"; };
 		9C52EAC51C3211B8007CC685 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		9C5428E11CAF0EC500348DF2 /* PrinterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterViewController.swift; sourceTree = "<group>"; };
 		9C7904C31C26650B00FFE0C6 /* CDFLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDFLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7904C61C26650B00FFE0C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C7904CD1C26650B00FFE0C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				9C52EAB91C31D0FD007CC685 /* MainController.swift */,
 				9C52EABD1C31D1FA007CC685 /* ComputersViewController.swift */,
 				9C52EABF1C31D20B007CC685 /* PrintersViewController.swift */,
+				9C5428E11CAF0EC500348DF2 /* PrinterViewController.swift */,
 				9C52EAC11C31D214007CC685 /* LocationsViewController.swift */,
 			);
 			name = Controllers;
@@ -415,6 +418,7 @@
 				9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */,
 				9C4F9AC81C35D7D700ED0400 /* Constants.swift in Sources */,
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,
+				9C5428E21CAF0EC500348DF2 /* PrinterViewController.swift in Sources */,
 				9C7904C71C26650B00FFE0C6 /* AppDelegate.swift in Sources */,
 				9C7E5C9B1C33376800650437 /* Extensions.swift in Sources */,
 				9C4F9ABE1C34D3EA00ED0400 /* Lab.swift in Sources */,
