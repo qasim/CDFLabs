@@ -19,7 +19,7 @@ class CLTableView: UITableView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.separatorStyle = .None
-        self.allowsSelection = false
+        // self.allowsSelection = false
         self.contentInset = UIEdgeInsetsMake(CLTable.cellPadding, 0, 0, 0)
     }
     

@@ -96,6 +96,11 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return PrinterTableViewCell(printer: self.printerData[indexPath.row])
     }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let printerViewController = PrinterViewController(printer: self.printerData[indexPath.row], row: indexPath.row)
+        self.pushViewController(printerViewController, animated: true)
+    }
     
     func refresh() {
         self.tableView?.setContentOffset(CGPointMake(0, self.tableView!.contentOffset.y - self.refreshControl!.frame.size.height), animated: true)
@@ -117,9 +122,7 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                         let rawJobs = printer["jobs"] as! [[String:String]]
                         var jobs: [PrintJob] = []
                         for job in rawJobs {
-                            if job["rank"] != "done" {
-                                jobs.append(PrintJob(rank: job["rank"]!, size: job["size"]!))
-                            }
+                            jobs.append(PrintJob(owner: job["owner"]!, rank: job["rank"]!, size: job["size"]!))
                         }
                         
                         let description = printer["description"] as! String
@@ -137,6 +140,11 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
             refreshControl.endRefreshing()
             CATransaction.commit()
         }
+    }
+
+    func refresh(row: Int) -> [PrintJob] {
+        self.refresh(self.refreshControl!)
+        return self.printerData[row].jobs
     }
     
     func info() {

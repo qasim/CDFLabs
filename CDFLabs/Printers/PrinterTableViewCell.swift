@@ -10,7 +10,10 @@ import UIKit
 
 
 class PrinterTableViewCell: UITableViewCell {
-    
+
+    var insetView: UIView?
+    var highlightedColor = UIColor(red: 222 / 255, green: 222 / 255, blue: 222 / 255, alpha: 1.0)
+
     init(printer: Printer) {
         super.init(style: .Default, reuseIdentifier: printer.name)
         
@@ -25,7 +28,7 @@ class PrinterTableViewCell: UITableViewCell {
         
         let metricsDict: [String: AnyObject] = [
             "cellPadding": CLTable.cellPadding,
-            "cellHeight": CLTable.printerCellHeight
+            "cellHeight": CLTable.printerCellHeight + 6
         ]
         
         let options = NSLayoutFormatOptions(rawValue: 0)
@@ -34,7 +37,7 @@ class PrinterTableViewCell: UITableViewCell {
             "|-cellPadding-[insetView]-cellPadding-|", options: options, metrics: metricsDict, views: viewsDict))
         
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|[insetView]-cellPadding-|", options: options, metrics: metricsDict, views: viewsDict))
+            "V:|[insetView(cellHeight)]-cellPadding-|", options: options, metrics: metricsDict, views: viewsDict))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,6 +49,7 @@ class PrinterTableViewCell: UITableViewCell {
         insetView.translatesAutoresizingMaskIntoConstraints = false
         insetView.backgroundColor = UIColor.whiteColor()
         insetView.layer.cornerRadius = CLTable.cellCornerRadius
+        self.insetView = insetView
         
         let freeView = self.createFreeView(printer)
         insetView.addSubview(freeView)
@@ -162,5 +166,17 @@ class PrinterTableViewCell: UITableViewCell {
         freeView.addConstraint(NSLayoutConstraint(item: freeTextLabel, attribute: .CenterY, relatedBy: .Equal, toItem: freeView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
         
         return freeView
+    }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        // Do nothing
+    }
+
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        if (highlighted) {
+            self.insetView!.backgroundColor = self.highlightedColor
+        } else {
+            self.insetView!.backgroundColor = UIColor.whiteColor()
+        }
     }
 }

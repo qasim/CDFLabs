@@ -141,4 +141,12 @@ class LabTableViewCell: UITableViewCell {
         
         return freeView
     }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        // Do nothing
+    }
+
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        // Do nothing
+    }
 }
