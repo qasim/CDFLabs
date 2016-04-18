@@ -6,14 +6,6 @@
 //  Copyright © 2016 Qasim Iqbal. All rights reserved.
 //
 
-//
-//  LabTableViewCell.swift
-//  CDFLabs
-//
-//  Created by Qasim Iqbal on 12/31/15.
-//  Copyright © 2015 Qasim Iqbal. All rights reserved.
-//
-
 import UIKit
 
 class NXLocationViewCell: UITableViewCell {

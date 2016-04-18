@@ -121,8 +121,6 @@ class BahenLocationViewCell: UITableViewCell {
             "thirdFloorHeight": thirdFloorImage.fittedSize.height + 32
         ]
         
-        print(secondFloorImage.fittedSize)
-        
         let options = NSLayoutFormatOptions(rawValue: 0)
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(

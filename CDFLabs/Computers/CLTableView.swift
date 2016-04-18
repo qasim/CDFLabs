@@ -1,5 +1,5 @@
 //
-//  LabTableView.swift
+//  CLTableView.swift
 //  CDFLabs
 //
 //  Created by Qasim Iqbal on 12/31/15.
