@@ -10,6 +10,8 @@ import UIKit
 
 class PrinterJobViewCell: UITableViewCell {
 
+    var freeViewSize: Int = 0
+
     init(job: PrintJob) {
         super.init(style: .Default, reuseIdentifier: job.id)
 
@@ -78,7 +80,8 @@ class PrinterJobViewCell: UITableViewCell {
 
         let metricsDict: [String: AnyObject] = [
             "cellPadding": CLTable.cellPadding,
-            "cellHeight": CLTable.printerCellHeight
+            "cellHeight": CLTable.printerCellHeight,
+            "freeViewSize": self.freeViewSize
         ]
 
         let options = NSLayoutFormatOptions(rawValue: 0)
@@ -87,7 +90,7 @@ class PrinterJobViewCell: UITableViewCell {
             "|-16-[ownerLabel]", options: options, metrics: metricsDict, views: viewsDict))
 
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|-16-[freeView(68)]-[jobSizeLabel]", options: options, metrics: metricsDict, views: viewsDict))
+            "|-16-[freeView(freeViewSize)]-[jobSizeLabel]", options: options, metrics: metricsDict, views: viewsDict))
 
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[freeView(20)]", options: options, metrics: metricsDict, views: viewsDict))
@@ -117,15 +120,23 @@ class PrinterJobViewCell: UITableViewCell {
         if job.rank.containsString("done") {
             freeView.backgroundColor = UIColor.cdfGreenColor()
             freeTextLabel.text = "DONE"
+            self.freeViewSize = 50
         } else if job.rank.containsString("active") {
             freeView.backgroundColor = UIColor.cdfGreenColor()
             freeTextLabel.text = "ACTIVE"
+            self.freeViewSize = 58
         } else if job.rank.containsString("stalled") {
             freeView.backgroundColor = UIColor.cdfRedColor()
             freeTextLabel.text = "STALLED"
+            self.freeViewSize = 66
         } else {
             freeView.backgroundColor = UIColor.cdfYellowColor()
             freeTextLabel.text = "RANK \(job.rank)"
+            if job.rank.characters.count == 1 {
+                self.freeViewSize = 60
+            } else {
+                self.freeViewSize = 68
+            }
         }
 
         let viewsDict: [String: AnyObject] = [
