@@ -162,4 +162,12 @@ class BahenLocationViewCell: UITableViewCell {
                 "http://maps.apple.com/?q=Bahen+Centre+for+Information+Technology")!)
         }
     }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        // Do nothing
+    }
+
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        // Do nothing
+    }
 }

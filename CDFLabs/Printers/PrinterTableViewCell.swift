@@ -45,22 +45,38 @@ class PrinterTableViewCell: UITableViewCell {
     }
     
     func createInsetView(printer: Printer) -> UIView {
+        var count: Int = 0
+        var sizeString: String = ""
+        if printer.jobs.count > 0 {
+            var size: Int = 0
+            for printJob in printer.jobs {
+                if !printJob.rank.containsString("done") {
+                    count += 1
+                    size += Int(ceil(printJob.size))
+                }
+            }
+
+            let f = NSNumberFormatter()
+            f.numberStyle = .DecimalStyle
+            sizeString = f.stringFromNumber(size)!
+        }
+
         let insetView = UIView()
         insetView.translatesAutoresizingMaskIntoConstraints = false
         insetView.backgroundColor = UIColor.whiteColor()
         insetView.layer.cornerRadius = CLTable.cellCornerRadius
         self.insetView = insetView
-        
-        let freeView = self.createFreeView(printer)
+
+        let freeView = self.createFreeView(printer, count: count)
         insetView.addSubview(freeView)
-        
+
         let printerNameLabel = UILabel()
         printerNameLabel.translatesAutoresizingMaskIntoConstraints = false
         printerNameLabel.textColor = UIColor.blackColor()
         printerNameLabel.font = UIFont.systemFontOfSize(24.0, weight: UIFontWeightLight)
         printerNameLabel.text = printer.name
         insetView.addSubview(printerNameLabel)
-        
+
         let printerDescLabel = UILabel()
         printerDescLabel.translatesAutoresizingMaskIntoConstraints = false
         printerDescLabel.textColor = UIColor.darkGrayColor()
@@ -69,28 +85,18 @@ class PrinterTableViewCell: UITableViewCell {
         printerDescLabel.numberOfLines = 0
         printerDescLabel.text = printer.description
         insetView.addSubview(printerDescLabel)
-        
+
         let printerDetailsLabel = UILabel()
         printerDetailsLabel.translatesAutoresizingMaskIntoConstraints = false
         printerDetailsLabel.textColor = UIColor.grayColor()
         printerDetailsLabel.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
-        
-        if printer.jobs.count > 0 {
-            var s = "s"
-            if printer.jobs.count == 1 {
-                s = ""
-            }
-            
-            var size: Int = 0
-            for printJob in printer.jobs {
-                size += Int(ceil(printJob.size))
-            }
-            
-            let f = NSNumberFormatter()
-            f.numberStyle = .DecimalStyle
-            let sizeString = f.stringFromNumber(size)!
-            
-            printerDetailsLabel.text = "\(printer.jobs.count) job\(s) queued (\(sizeString) KB)"
+
+        var s = "s"
+        if count == 1 {
+            s = ""
+        }
+        if count > 0 {
+            printerDetailsLabel.text = "\(count) job\(s) queued (\(sizeString) KB)"
         } else {
             printerDetailsLabel.text = "No jobs queued"
         }
@@ -133,7 +139,7 @@ class PrinterTableViewCell: UITableViewCell {
         return insetView
     }
     
-    func createFreeView(printer: Printer) -> UIView {
+    func createFreeView(printer: Printer, count: Int) -> UIView {
         let freeView = UIView()
         freeView.translatesAutoresizingMaskIntoConstraints = false
         freeView.layer.cornerRadius = CLTable.cellCornerRadius
@@ -146,7 +152,7 @@ class PrinterTableViewCell: UITableViewCell {
         
         freeView.addSubview(freeTextLabel)
         
-        if printer.jobs.count > 0 {
+        if count > 0 {
             freeView.backgroundColor = UIColor.cdfYellowColor()
             freeTextLabel.text = "BUSY"
         } else {
