@@ -14,6 +14,8 @@ class PrinterTableViewCell: UITableViewCell {
     var insetView: UIView?
     var highlightedColor = UIColor(red: 222 / 255, green: 222 / 255, blue: 222 / 255, alpha: 1.0)
 
+    var freeViewSize: CGFloat = 0
+
     init(printer: Printer) {
         super.init(style: .Default, reuseIdentifier: printer.name)
         
@@ -113,7 +115,8 @@ class PrinterTableViewCell: UITableViewCell {
         
         let metricsDict: [String: AnyObject] = [
             "cellPadding": CLTable.cellPadding,
-            "cellHeight": CLTable.printerCellHeight
+            "cellHeight": CLTable.printerCellHeight,
+            "freeViewSize": self.freeViewSize
         ]
         
         let options = NSLayoutFormatOptions(rawValue: 0)
@@ -125,7 +128,7 @@ class PrinterTableViewCell: UITableViewCell {
             "|-16-[printerDescLabel]-16-|", options: options, metrics: metricsDict, views: viewsDict))
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|-16-[freeView(46)]-[printerDetailsLabel]", options: options, metrics: metricsDict, views: viewsDict))
+            "|-16-[freeView(freeViewSize)]-[printerDetailsLabel]", options: options, metrics: metricsDict, views: viewsDict))
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[freeView(20)]", options: options, metrics: metricsDict, views: viewsDict))
@@ -159,6 +162,9 @@ class PrinterTableViewCell: UITableViewCell {
             freeView.backgroundColor = UIColor.cdfGreenColor()
             freeTextLabel.text = "FREE"
         }
+
+        self.freeViewSize = freeTextLabel.text!.calculatedWidth(freeTextLabel.font) +
+            (2 * CLTable.tagPadding)
         
         let viewsDict: [String: AnyObject] = [
             "freeTextLabel": freeTextLabel

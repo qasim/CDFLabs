@@ -62,7 +62,7 @@ class BahenLocationViewCell: UITableViewCell {
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.textColor = UIColor.grayColor()
         locationLabel.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
-        let tapListener = UITapGestureRecognizer(target: self, action: "openMaps")
+        let tapListener = UITapGestureRecognizer(target: self, action: #selector(self.openMaps))
         tapListener.numberOfTapsRequired = 1
         locationLabel.addGestureRecognizer(tapListener)
         locationLabel.userInteractionEnabled = true
@@ -76,6 +76,7 @@ class BahenLocationViewCell: UITableViewCell {
         descriptionLabel.lineBreakMode = .ByWordWrapping
         descriptionLabel.numberOfLines = 0
         descriptionLabel.text = "The Bahen Centre hosts the majority of the CDF labs, highlighted below."
+        descriptionLabel.setLineHeight(1.1)
         insetView.addSubview(descriptionLabel)
         
         let secondFloorLabel = UILabel()

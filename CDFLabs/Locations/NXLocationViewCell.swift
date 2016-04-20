@@ -62,6 +62,7 @@ class NXLocationViewCell: UITableViewCell {
         descriptionLabel.lineBreakMode = .ByWordWrapping
         descriptionLabel.numberOfLines = 0
         descriptionLabel.text = "CDF offers an NX server for remote desktop connection from home or from your laptop via the wireless network. The NX technology attempts to greatly improve the experience of remote graphical connection over a slow Internet link by optimising perceived speed of response and allowing one to suspend a graphical session and reconnect to it later. You can also connect to CDF's NX server from any CDF workstation or Information Commons workstation using a specially crafted profile."
+        descriptionLabel.setLineHeight(1.1)
         insetView.addSubview(descriptionLabel)
         
         let viewsDict: [String: AnyObject] = [

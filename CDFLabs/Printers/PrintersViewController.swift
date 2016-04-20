@@ -8,7 +8,6 @@
 
 import UIKit
 import Just
-import KLCPopup
 
 class PrintersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,10 +17,7 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     
     var printerData: [Printer] = []
     var tableView: UITableView?
-    
-    var popupView: InfoPopupView?
-    var popup: KLCPopup?
-    
+
     override func loadView() {
         super.loadView()
         
@@ -40,16 +36,23 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         
         self.pushViewController(contentViewController!, animated: false)
         
-        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
+        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self,
+                                             action: #selector(self.refresh as Void -> Void))
         self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
-        
+
+        /*
         let infoButton = UIButton(type: .InfoLight)
         infoButton.tintColor = UIColor.whiteColor()
-        infoButton.addTarget(self, action: "info", forControlEvents: .TouchUpInside)
+        infoButton.addTarget(self, action: #selector(self.info), forControlEvents: .TouchUpInside)
         let infoBarButton = UIBarButtonItem(customView: infoButton)
         self.contentViewController!.navigationItem.leftBarButtonItem = infoBarButton
+        */
         
         self.refresh()
+
+        if NSUserDefaults.standardUserDefaults().isFirstPrintersLaunch() {
+            PopupView.showFirstPrintersLaunchPopup()
+        }
     }
     
     func loadContentView() {
@@ -83,7 +86,9 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         self.tableView?.dataSource = self
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.refreshControl?.addTarget(self,
+                                       action: #selector(self.refresh(_:) as UIRefreshControl -> Void),
+                                       forControlEvents: .ValueChanged)
         self.tableView?.addSubview(refreshControl!)
         
         self.tableView?.reloadData()
@@ -122,7 +127,11 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
                         let rawJobs = printer["jobs"] as! [[String:String]]
                         var jobs: [PrintJob] = []
                         for job in rawJobs {
-                            jobs.append(PrintJob(owner: job["owner"]!, rank: job["rank"]!, size: job["size"]!))
+                            jobs.append(PrintJob(
+                                    owner: job["owner"]!,
+                                    rank: job["rank"]!,
+                                    size: job["size"]!,
+                                    time: job["time"]!))
                         }
                         
                         let description = printer["description"] as! String
@@ -145,13 +154,5 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     func refresh(row: Int) -> [PrintJob] {
         self.refresh(self.refreshControl!)
         return self.printerData[row].jobs
-    }
-    
-    func info() {
-        if self.popup == nil {
-            self.popupView = InfoPopupView()
-            self.popup = KLCPopup(contentView: self.popupView!)
-        }
-        self.popup!.show()
     }
 }

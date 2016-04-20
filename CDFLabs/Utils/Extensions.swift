@@ -46,6 +46,15 @@ extension String {
     func replace(target: String, withString: String) -> String {
         return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
+
+    func calculatedWidth(font: UIFont) -> CGFloat {
+        let boundingBox = self.boundingRectWithSize(
+            CGSize(width: 320, height: 64),
+            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            attributes: [NSFontAttributeName: font], context: nil)
+
+        return ceil(boundingBox.width)
+    }
 }
 
 extension UIImageView {
@@ -58,5 +67,41 @@ extension UIImageView {
         let desiredHeight = ratio * imgSize!.height
         
         return CGSize(width: desiredWidth, height: desiredHeight)
+    }
+}
+
+extension UILabel {
+    func setLineHeight(lineHeight: CGFloat) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 1.0
+        paragraphStyle.lineHeightMultiple = lineHeight
+        paragraphStyle.alignment = self.textAlignment
+
+        let attrString = NSMutableAttributedString(string: self.text!)
+        attrString.addAttribute(NSFontAttributeName, value: self.font, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        self.attributedText = attrString
+    }
+}
+
+extension NSUserDefaults {
+    func isFirstLaunch() -> Bool {
+        return true
+        if !NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedBefore") {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedBefore")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            return true
+        }
+        return false
+    }
+
+    func isFirstPrintersLaunch() -> Bool {
+        return true
+        if !NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedPrintersBefore") {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedPrintersBefore")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            return true
+        }
+        return false
     }
 }

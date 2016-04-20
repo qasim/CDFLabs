@@ -8,7 +8,6 @@
 
 import UIKit
 import Just
-import KLCPopup
 
 class ComputersViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,9 +17,6 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     
     var labData: [Lab] = []
     var tableView: UITableView?
-    
-    var popupView: InfoPopupView?
-    var popup: KLCPopup?
     
     override func loadView() {
         super.loadView()
@@ -43,16 +39,23 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         self.loadContentView()
         self.pushViewController(self.contentViewController!, animated: false)
         
-        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
+        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self,
+                                             action: #selector(self.refresh as Void -> Void))
         self.contentViewController!.navigationItem.rightBarButtonItem = self.refreshButton!
         
+        /*
         let infoButton = UIButton(type: .InfoLight)
         infoButton.tintColor = UIColor.whiteColor()
-        infoButton.addTarget(self, action: "info", forControlEvents: .TouchUpInside)
+        infoButton.addTarget(self, action: #selector(self.info), forControlEvents: .TouchUpInside)
         let infoBarButton = UIBarButtonItem(customView: infoButton)
         self.contentViewController!.navigationItem.leftBarButtonItem = infoBarButton
+        */
         
         self.refresh()
+
+        if NSUserDefaults.standardUserDefaults().isFirstLaunch() {
+            PopupView.showFirstLaunchPopup()
+        }
     }
     
     func loadContentView() {
@@ -84,7 +87,8 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         self.tableView?.dataSource = self
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(self.refresh(_:)),
+                                       forControlEvents: .ValueChanged)
         self.tableView?.addSubview(self.refreshControl!)
         
         self.tableView?.reloadData()
@@ -94,16 +98,21 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         return labData.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return LabTableViewCell(lab: self.labData[indexPath.row])
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView,
+                   heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return CLTable.cellHeight + CLTable.cellPadding
     }
     
     func refresh() {
-        self.tableView?.setContentOffset(CGPointMake(0, self.tableView!.contentOffset.y - self.refreshControl!.frame.size.height), animated: true)
+        self.tableView?.setContentOffset(
+            CGPointMake(0,
+                self.tableView!.contentOffset.y - self.refreshControl!.frame.size.height),
+            animated: true)
         self.refreshControl!.beginRefreshing()
         self.refresh(self.refreshControl!)
     }
@@ -119,7 +128,11 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
                             let avail = lab["available"] as! Int
                             let busy = lab["busy"] as! Int
                             let total = lab["total"] as! Int
-                            self.labData.append(Lab(name: name, avail: avail, busy: busy, total: total))
+                            self.labData.append(
+                                Lab(name: name,
+                                    avail: avail,
+                                    busy: busy,
+                                    total: total))
                         }
                     }
                 }
@@ -132,13 +145,5 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
             refreshControl.endRefreshing()
             CATransaction.commit()
         }
-    }
-    
-    func info() {
-        if self.popup == nil {
-            self.popupView = InfoPopupView()
-            self.popup = KLCPopup(contentView: self.popupView!)
-        }
-        self.popup!.show()
     }
 }

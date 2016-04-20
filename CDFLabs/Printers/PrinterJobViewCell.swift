@@ -10,7 +10,7 @@ import UIKit
 
 class PrinterJobViewCell: UITableViewCell {
 
-    var freeViewSize: Int = 0
+    var freeViewSize: CGFloat = 0
 
     init(job: PrintJob) {
         super.init(style: .Default, reuseIdentifier: job.id)
@@ -66,8 +66,8 @@ class PrinterJobViewCell: UITableViewCell {
 
         let f = NSNumberFormatter()
         f.numberStyle = .DecimalStyle
-        let sizeString = f.stringFromNumber(job.size)!
-        jobSizeLabel.text = "\(sizeString) KB"
+        let sizeString = f.stringFromNumber(ceil(job.size))!
+        jobSizeLabel.text = " \(sizeString) KB  (\(job.time))"
 
         insetView.addSubview(jobSizeLabel)
 
@@ -120,24 +120,19 @@ class PrinterJobViewCell: UITableViewCell {
         if job.rank.containsString("done") {
             freeView.backgroundColor = UIColor.cdfGreenColor()
             freeTextLabel.text = "DONE"
-            self.freeViewSize = 50
         } else if job.rank.containsString("active") {
             freeView.backgroundColor = UIColor.cdfGreenColor()
             freeTextLabel.text = "ACTIVE"
-            self.freeViewSize = 58
         } else if job.rank.containsString("stalled") {
             freeView.backgroundColor = UIColor.cdfRedColor()
             freeTextLabel.text = "STALLED"
-            self.freeViewSize = 66
         } else {
             freeView.backgroundColor = UIColor.cdfYellowColor()
             freeTextLabel.text = "RANK \(job.rank)"
-            if job.rank.characters.count == 1 {
-                self.freeViewSize = 60
-            } else {
-                self.freeViewSize = 68
-            }
         }
+
+        self.freeViewSize = freeTextLabel.text!.calculatedWidth(freeTextLabel.font) +
+            (2 * CLTable.tagPadding)
 
         let viewsDict: [String: AnyObject] = [
             "freeTextLabel": freeTextLabel

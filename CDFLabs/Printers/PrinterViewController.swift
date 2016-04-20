@@ -43,7 +43,8 @@ class PrinterViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = printer?.name
 
-        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh")
+        self.refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self,
+                                             action: #selector(self.refresh as Void -> Void))
         self.navigationItem.rightBarButtonItem = self.refreshButton!
     }
 
@@ -73,7 +74,8 @@ class PrinterViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView?.dataSource = self
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(self.refresh(_:)),
+                                       forControlEvents: .ValueChanged)
         self.tableView?.addSubview(refreshControl!)
 
         self.tableView?.reloadData()
@@ -83,16 +85,21 @@ class PrinterViewController: UIViewController, UITableViewDelegate, UITableViewD
         return printjobData.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return PrinterJobViewCell(job: self.printjobData[indexPath.row])
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView,
+                   heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return CLTable.cellHeight + CLTable.cellPadding + 6
     }
 
     func refresh() {
-        self.tableView?.setContentOffset(CGPointMake(0, self.tableView!.contentOffset.y - self.refreshControl!.frame.size.height), animated: true)
+        self.tableView?.setContentOffset(
+            CGPointMake(0,
+                self.tableView!.contentOffset.y - self.refreshControl!.frame.size.height),
+            animated: true)
         self.refreshControl!.beginRefreshing()
         self.refresh(self.refreshControl!)
     }

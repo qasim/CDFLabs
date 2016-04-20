@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C36B09E1C3DB73F002B2120 /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B09D1C3DB73F002B2120 /* InfoPopupView.swift */; };
+		9C36B09E1C3DB73F002B2120 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B09D1C3DB73F002B2120 /* PopupView.swift */; };
 		9C4F9ABE1C34D3EA00ED0400 /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */; };
 		9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */; };
 		9C4F9AC61C35C73A00ED0400 /* CLTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */; };
@@ -51,7 +51,7 @@
 
 /* Begin PBXFileReference section */
 		1E51D842B413DB9E78A473B2 /* Pods-CDFLabs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDFLabs.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDFLabs/Pods-CDFLabs.release.xcconfig"; sourceTree = "<group>"; };
-		9C36B09D1C3DB73F002B2120 /* InfoPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPopupView.swift; sourceTree = "<group>"; };
+		9C36B09D1C3DB73F002B2120 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		9C4F9ABD1C34D3EA00ED0400 /* Lab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lab.swift; sourceTree = "<group>"; };
 		9C4F9AC31C35A1BD00ED0400 /* LabTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTableViewCell.swift; sourceTree = "<group>"; };
 		9C4F9AC51C35C73A00ED0400 /* CLTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTableView.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				9C52EAB91C31D0FD007CC685 /* MainController.swift */,
-				9C36B09D1C3DB73F002B2120 /* InfoPopupView.swift */,
+				9C36B09D1C3DB73F002B2120 /* PopupView.swift */,
 				9C5F180C1CC48BAB00D10931 /* Computers */,
 				9C5F180D1CC48BF500D10931 /* Printers */,
 				9C5F180E1CC48C7900D10931 /* Locations */,
@@ -419,7 +419,7 @@
 				9C5F180B1CC48B4400D10931 /* PrinterViewController.swift in Sources */,
 				9CEA0FFA1C3864F9002B210C /* Printer.swift in Sources */,
 				9C4F9AC41C35A1BD00ED0400 /* LabTableViewCell.swift in Sources */,
-				9C36B09E1C3DB73F002B2120 /* InfoPopupView.swift in Sources */,
+				9C36B09E1C3DB73F002B2120 /* PopupView.swift in Sources */,
 				9CEA0FFE1C39CAA8002B210C /* PrintJob.swift in Sources */,
 				9C4F9AC81C35D7D700ED0400 /* Constants.swift in Sources */,
 				9C52EABE1C31D1FA007CC685 /* ComputersViewController.swift in Sources */,

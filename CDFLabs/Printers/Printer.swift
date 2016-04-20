@@ -22,7 +22,20 @@ public class Printer {
     
     public init(name: String, description: String, jobs: [PrintJob]) {
         self.name = name
+
         self.description = description
+        if self.description.containsString(" redirected ") {
+            self.description = self.description.componentsSeparatedByString(" redirected ")[1]
+            self.description = self.description.componentsSeparatedByString("(")[0]
+            self.description = "Redirected \(self.description)"
+        }
+
         self.jobs = jobs
+        // Pin jobs marked as "done" to the top
+        for i in 0...(self.jobs.count - 1) {
+            if self.jobs[i].rank.containsString("done") {
+                self.jobs.insert(self.jobs.removeAtIndex(i), atIndex: 0)
+            }
+        }
     }
 }
