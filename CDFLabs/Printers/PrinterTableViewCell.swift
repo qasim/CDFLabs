@@ -49,12 +49,18 @@ class PrinterTableViewCell: UITableViewCell {
     func createInsetView(printer: Printer) -> UIView {
         var count: Int = 0
         var sizeString: String = ""
+        var error: String = ""
         if printer.jobs.count > 0 {
             var size: Int = 0
             for printJob in printer.jobs {
                 if !printJob.rank.containsString("done") {
                     count += 1
                     size += Int(ceil(printJob.size))
+                }
+                if printJob.rank.containsString("error") {
+                    error = "ERROR"
+                } else if printJob.rank.containsString("stalled") {
+                    error = "STALLED"
                 }
             }
 
@@ -69,7 +75,7 @@ class PrinterTableViewCell: UITableViewCell {
         insetView.layer.cornerRadius = CLTable.cellCornerRadius
         self.insetView = insetView
 
-        let freeView = self.createFreeView(printer, count: count)
+        let freeView = self.createFreeView(printer, count: count, error: error)
         insetView.addSubview(freeView)
 
         let printerNameLabel = UILabel()
@@ -122,7 +128,7 @@ class PrinterTableViewCell: UITableViewCell {
         let options = NSLayoutFormatOptions(rawValue: 0)
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "|-16-[printerNameLabel]", options: options, metrics: metricsDict, views: viewsDict))
+            "|-16-[printerNameLabel]-16-|", options: options, metrics: metricsDict, views: viewsDict))
         
         insetView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "|-16-[printerDescLabel]-16-|", options: options, metrics: metricsDict, views: viewsDict))
@@ -142,7 +148,7 @@ class PrinterTableViewCell: UITableViewCell {
         return insetView
     }
     
-    func createFreeView(printer: Printer, count: Int) -> UIView {
+    func createFreeView(printer: Printer, count: Int, error: String) -> UIView {
         let freeView = UIView()
         freeView.translatesAutoresizingMaskIntoConstraints = false
         freeView.layer.cornerRadius = CLTable.cellCornerRadius
@@ -161,6 +167,14 @@ class PrinterTableViewCell: UITableViewCell {
         } else {
             freeView.backgroundColor = UIColor.cdfGreenColor()
             freeTextLabel.text = "FREE"
+        }
+
+        if error == "STALLED" {
+            freeView.backgroundColor = UIColor.cdfRedColor()
+            freeTextLabel.text = "STALLED"
+        } else if error == "ERROR" {
+            freeView.backgroundColor = UIColor.cdfRedColor()
+            freeTextLabel.text = "ERROR"
         }
 
         self.freeViewSize = freeTextLabel.text!.calculatedWidth(freeTextLabel.font) +

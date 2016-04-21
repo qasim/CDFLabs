@@ -81,7 +81,7 @@ class PopupView: UIView {
             "|-20-[button]-20-|", options: options, metrics: metricsDict, views: viewsDict))
 
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-16-[titleLabel]-16-[infoLabel][paddingView(>=1)]-16-[button(40)]-16-|", options: options, metrics: metricsDict, views: viewsDict))
+            "V:|-20-[titleLabel]-12-[infoLabel][paddingView(>=1)]-12-[button(40)]-16-|", options: options, metrics: metricsDict, views: viewsDict))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -97,6 +97,7 @@ class PopupView: UIView {
             this.popupView = PopupView()
             this.popup = KLCPopup(contentView: this.popupView!)
             this.popup!.showType = .BounceInFromTop
+            this.popup!.dismissType = .FadeOut
         }
     }
 
@@ -104,6 +105,7 @@ class PopupView: UIView {
         this.ensureInstance()
         this.popupView!.titleLabel!.text = "Welcome to CDF Labs!"
         this.popupView!.infoLabel!.text = "Use this app to check the availability of CDF computers and printer queues at the University of Toronto."
+        this.popupView!.button!.setTitle("Continue", forState: UIControlState.Normal)
         this.popupView!.infoLabel!.setLineHeight(1.1)
         this.popup!.show()
     }
@@ -112,7 +114,7 @@ class PopupView: UIView {
         this.ensureInstance()
         this.popupView!.titleLabel!.text = "See who's printing..."
         this.popupView!.infoLabel!.text = "Tap on a printer to view detailed queue information."
-        this.popupView!.button!.setTitle("I'll try it out!", forState: UIControlState.Normal)
+        this.popupView!.button!.setTitle("I'll try it out", forState: UIControlState.Normal)
 
         var frame = this.popupView!.frame
         frame.size.height = 176

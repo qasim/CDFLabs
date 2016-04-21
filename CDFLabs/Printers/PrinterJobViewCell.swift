@@ -67,7 +67,12 @@ class PrinterJobViewCell: UITableViewCell {
         let f = NSNumberFormatter()
         f.numberStyle = .DecimalStyle
         let sizeString = f.stringFromNumber(ceil(job.size))!
-        jobSizeLabel.text = " \(sizeString) KB  (\(job.time))"
+        if job.time.characters.count > 0 {
+            jobSizeLabel.text = " \(sizeString) KB  (\(job.time))"
+        } else {
+            jobSizeLabel.text = " \(sizeString) KB"
+        }
+
 
         insetView.addSubview(jobSizeLabel)
 
@@ -126,6 +131,9 @@ class PrinterJobViewCell: UITableViewCell {
         } else if job.rank.containsString("stalled") {
             freeView.backgroundColor = UIColor.cdfRedColor()
             freeTextLabel.text = "STALLED"
+        } else if job.rank.containsString("error") {
+            freeView.backgroundColor = UIColor.cdfRedColor()
+            freeTextLabel.text = "ERROR"
         } else {
             freeView.backgroundColor = UIColor.cdfYellowColor()
             freeTextLabel.text = "RANK \(job.rank)"

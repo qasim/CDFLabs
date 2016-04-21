@@ -21,20 +21,19 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
     override func loadView() {
         super.loadView()
         
-        /*self.labData = [
-            Lab(name: "BA 2270", avail: 27, busy: 5,  total: 32, timestamp: ""),
-            Lab(name: "BA 3185", avail: 16, busy: 4,  total: 20, timestamp: ""),
-            Lab(name: "BA 3175", avail: 12, busy: 5,  total: 17, timestamp: ""),
-            Lab(name: "BA 3165", avail: 2,  busy: 23, total: 25, timestamp: ""),
-            Lab(name: "BA 2210", avail: 13, busy: 13, total: 26, timestamp: ""),
-            Lab(name: "BA 2250", avail: 19, busy: 14, total: 33, timestamp: ""),
-            Lab(name: "BA 3250", avail: 6,  busy: 25, total: 31, timestamp: ""),
-            Lab(name: "BA 2175", avail: 0,  busy: 27, total: 27, timestamp: ""),
-            Lab(name: "BA 2185", avail: 19, busy: 2,  total: 21, timestamp: ""),
-            Lab(name: "BA 2165", avail: 3,  busy: 14, total: 17, timestamp: ""),
-            Lab(name: "NX",      avail: 16, busy: 14, total: 30, timestamp: ""),
-            Lab(name: "GB 215",  avail: 32, busy: 3,  total: 35, timestamp: "")
-        ]*/
+        self.labData = [
+            Lab(name: "BA 2200", avail: 6,  busy: 25, total: 31),
+            Lab(name: "BA 2210", avail: 16, busy: 4,  total: 20),
+            Lab(name: "BA 2220", avail: 12, busy: 5,  total: 17),
+            Lab(name: "BA 2240", avail: 2,  busy: 23, total: 25),
+            Lab(name: "BA 2270", avail: 0, busy: 32,  total: 32),
+            Lab(name: "BA 3175", avail: 19, busy: 14, total: 33),
+            Lab(name: "BA 3185", avail: 13, busy: 13, total: 26),
+            Lab(name: "BA 3195", avail: 19, busy: 2,  total: 21),
+            Lab(name: "BA 3200", avail: 0,  busy: 27, total: 27),
+            Lab(name: "GB 215",  avail: 32, busy: 3,  total: 35),
+            Lab(name: "NX",      avail: 63, busy: 5, total: 68)
+        ]
         
         self.loadContentView()
         self.pushViewController(self.contentViewController!, animated: false)
@@ -51,7 +50,7 @@ class ComputersViewController: UINavigationController, UITableViewDelegate, UITa
         self.contentViewController!.navigationItem.leftBarButtonItem = infoBarButton
         */
         
-        self.refresh()
+        // self.refresh()
 
         if NSUserDefaults.standardUserDefaults().isFirstLaunch() {
             PopupView.showFirstLaunchPopup()

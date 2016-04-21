@@ -21,16 +21,40 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
     override func loadView() {
         super.loadView()
         
-        /* self.printerData = [
-            Printer(name: "P2210b", description: "Kyocera Network Printer in BA2210", jobs: []),
-            Printer(name: "P3175a", description: "Kyocera Network Printer in BA3175", jobs: [
-                PrintJob(rank: "n/a", size: "223422")
-            ]),
-            Printer(name: "P2210a", description: "Kyocera Network Printer in BA2210", jobs: [
-                PrintJob(),
-                PrintJob()
-            ])
-        ] */
+        self.printerData = [
+            Printer(name: "P2210a", description: "Kyocera Network Printer in BA2210",
+                jobs: [
+                    PrintJob(owner: "g5vicli@", rank: "done", size: "431613", time: "12:52:41"),
+                    PrintJob(owner: "g4joe@", rank: "stalled", size: "139434", time: "13:02:38"),
+                    PrintJob(owner: "g2juan@", rank: "2", size: "1841531", time: "15:39:36"),
+                    PrintJob(owner: "g2juan@", rank: "3", size: "1956348", time: "15:39:37"),
+                    PrintJob(owner: "g3mary@", rank: "4", size: "223422", time: "15:42:54"),
+                    PrintJob(owner: "g3mary@", rank: "5", size: "221583", time: "15:42:54"),
+                    PrintJob(owner: "g3mary@", rank: "6", size: "518310", time: "15:42:55"),
+                    PrintJob(owner: "g5seung@", rank: "7", size: "960694", time: "15:43:02"),
+                    PrintJob(owner: "g5seung@", rank: "8", size: "1199044", time: "15:43:02"),
+                    PrintJob(owner: "g5seung@", rank: "9", size: "1547443", time: "15:43:02"),
+                    PrintJob(owner: "g5seung@", rank: "10", size: "1649745", time: "15:43:03"),
+                    PrintJob(owner: "g5seung@", rank: "11", size: "1405074", time: "15:43:03")
+                ]),
+            Printer(name: "P2210b", description: "Kyocera Network Printer in BA2210",
+                jobs: [
+                    PrintJob(owner: "g5wan@", rank: "done", size: "223422", time: "14:02:26"),
+                    PrintJob(owner: "g3jill@", rank: "active", size: "377822", time: "14:03:13"),
+                    PrintJob(owner: "g3anna@", rank: "2", size: "247763", time: "14:03:38"),
+                    PrintJob(owner: "g3anna@", rank: "3", size: "266874", time: "14:03:38"),
+                    PrintJob(owner: "g3anna@", rank: "4", size: "221583", time: "14:03:38"),
+                    PrintJob(owner: "g5nagee@", rank: "5", size: "1183837", time: "14:06:12")
+                ]),
+            Printer(name: "P3185a", description: "Redirected to P3175a in BA3175",
+                jobs: [
+                    PrintJob(owner: "g5q@", rank: "done", size: "853311", time: "12:07:32")
+                ]),
+            Printer(name: "P3175a", description: "Kyocera Network Printer in BA3175",
+                jobs: [
+                    PrintJob(owner: "g5q@", rank: "done", size: "853311", time: "12:07:32")
+                ])
+        ]
         
         self.loadContentView()
         
@@ -47,8 +71,8 @@ class PrintersViewController: UINavigationController, UITableViewDelegate, UITab
         let infoBarButton = UIBarButtonItem(customView: infoButton)
         self.contentViewController!.navigationItem.leftBarButtonItem = infoBarButton
         */
-        
-        self.refresh()
+
+        // self.refresh()
 
         if NSUserDefaults.standardUserDefaults().isFirstPrintersLaunch() {
             PopupView.showFirstPrintersLaunchPopup()

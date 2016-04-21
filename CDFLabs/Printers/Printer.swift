@@ -32,9 +32,11 @@ public class Printer {
 
         self.jobs = jobs
         // Pin jobs marked as "done" to the top
-        for i in 0...(self.jobs.count - 1) {
-            if self.jobs[i].rank.containsString("done") {
-                self.jobs.insert(self.jobs.removeAtIndex(i), atIndex: 0)
+        if self.jobs.count > 0 {
+            for i in 0...(self.jobs.count - 1) {
+                if self.jobs[i].rank.containsString("done") {
+                    self.jobs.insert(self.jobs.removeAtIndex(i), atIndex: 0)
+                }
             }
         }
     }
